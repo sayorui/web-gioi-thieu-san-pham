@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CKEditor } from 'ckeditor4-react';
+import CKEditor from 'ckeditor4-react';
 
 // import '../node_modules/ckeditor-youtube-plugin/youtube';
 
@@ -31,11 +31,12 @@ export default class Post extends Component {
                         data={data}
                         config={{
                             // toolbar: [['Bold']]
-                            extraPlugins: ''
+                            // extraPlugins: 'easyimage'
                         }}
                         onChange={(evt) => { console.log(evt.editor.getData()); this.setState({ data: evt.editor.getData() }) }}
                     />
                 </div>
+                <div dangerouslySetInnerHTML={{ __html: data }}></div>
             </div>
         )
     }
