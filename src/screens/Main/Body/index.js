@@ -15,7 +15,7 @@ export default class Body extends Component {
                 </div>
 
                 {/* Side bar - Left */}
-                <aside className="left-sidebar" data-sidebarbg="skin1" dir="rtl">
+                <aside className="left-sidebar" data-sidebarbg="skin1" >
                     <nav className="sidebar-nav">
                         <input placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" class="form-control" />
                         <ul id="sidebarnav" className="in">
