@@ -17,16 +17,23 @@ export default class Body extends Component {
                 {/* Side bar - Left */}
                 <aside className="left-sidebar" data-sidebarbg="skin1" >
                     <nav className="sidebar-nav">
-                        <input placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" class="form-control" />
+                        <input placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" className="form-control" />
                         <ul id="sidebarnav" className="in">
                             <li className="sidebar-item">
                                 <a className="sidebar-link has-arrow waves-effect waves-dark">Link 1</a>
                             </li>
-                            <li><a>Link 2</a></li>
-                            <li><a>Link 3</a></li>
-                            <li><a>Link 4</a></li>
-                            <li><a>Link 5</a></li>
-                            <li><a>Link 6</a></li>
+                            <li className="sidebar-item">
+                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 2</a>
+                            </li>
+                            <li className="sidebar-item">
+                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 3</a>
+                            </li>
+                            <li className="sidebar-item">
+                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 4</a>
+                            </li>
+                            <li className="sidebar-item">
+                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 5</a>
+                            </li>
                         </ul>
                     </nav>
                 </aside>
