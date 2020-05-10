@@ -59,3 +59,7 @@
 .content {
   padding: 16px;
 }
+
+.textwidget {
+  text-align: left;
+}
