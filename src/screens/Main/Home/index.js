@@ -20,13 +20,14 @@ export default class Home extends Component {
 
     async componentDidMount() {
         // Gọi API ở đây
-        // fetch('').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
+        // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
         this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
     }
 
 
     render() {
         const { listTimHieuSanPham, listBaiVietMoi } = this.state;
+        console.log(30, this.props)
 
         return (
             <>

@@ -10,7 +10,7 @@ export default class Body extends Component {
                 {/* Page */}
                 <div className="page-wrapper" style={{ display: 'block' }}>
                     <div className="container-fluid">
-                        <Home />
+                        <Home abc={'123'}/>
                     </div>
                 </div>
 
