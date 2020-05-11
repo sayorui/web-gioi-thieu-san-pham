@@ -2,15 +2,29 @@ import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { Carousel } from "react-bootstrap";
 import Home from '../Home';
+import { Route } from 'react-router-dom';
+import Detail from '../../Detail';
 
 export default class Body extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
     render() {
         return (
             <>
                 {/* Page */}
                 <div className="page-wrapper" style={{ display: 'block' }}>
                     <div className="container-fluid">
-                        <Home abc={'123'}/>
+                        <Route path="/" exact>
+                            <Home />
+                        </Route>
+                        <Route path="/:title">
+                            <Detail />
+                        </Route>
                     </div>
                 </div>
 

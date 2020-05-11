@@ -27,7 +27,6 @@ export default class Home extends Component {
 
     render() {
         const { listTimHieuSanPham, listBaiVietMoi } = this.state;
-        console.log(30, this.props)
 
         return (
             <>
