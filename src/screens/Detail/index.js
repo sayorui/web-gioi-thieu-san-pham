@@ -6,9 +6,18 @@ const Detail = (props) => {
     console.log(6, params)
 
     return (
-        <div>
-            Chi tiết Post
-        </div>
+        <>
+            <div className="card">
+                <div className="card-body">
+                    Tiêu đề
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+                    Chi tiết
+                </div>
+            </div>
+        </>
     )
 }
 

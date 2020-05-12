@@ -17,9 +17,7 @@ function App() {
           <Route path="/new" exact>
             <Post />
           </Route>
-          {/* <Route path="/" exact> */}
             <Main />
-          {/* </Route> */}
         </Switch>
       </Router>
     </div>

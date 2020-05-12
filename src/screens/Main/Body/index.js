@@ -31,7 +31,7 @@ export default class Body extends Component {
                 {/* Side bar - Left */}
                 <aside className="left-sidebar" data-sidebarbg="skin1" >
                     <nav className="sidebar-nav">
-                        <input placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" className="form-control" />
+                        <input placeholder="Tìm kiếm" aria-label="Tìm kiếm" aria-describedby="basic-addon1" className="form-control" style={{ display: 'inline-block', width: '90%' }} />
                         <ul id="sidebarnav" className="in">
                             <li className="sidebar-item">
                                 <a className="sidebar-link has-arrow waves-effect waves-dark">Link 1</a>
