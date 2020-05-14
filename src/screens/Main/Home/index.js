@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Carousel } from 'react-bootstrap'
+import API from '../../../api'
 
 const fakeData = [
     { ID: 1, Title: '', Image: '../../assets/images/big/img6.jpg', Content: ` <h4 className="card-title">Card title</h4><p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>` },
@@ -21,7 +22,13 @@ export default class Home extends Component {
     async componentDidMount() {
         // Gọi API ở đây
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
-        this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
+
+        API.getPaging(1).then(res => {
+            if (res && res.length > 0) {
+                this.setState({listTimHieuSanPham: res,listBaiVietMoi: res})
+    }
+        })
+        //this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
     }
 
 
@@ -44,7 +51,7 @@ export default class Home extends Component {
                                                     <Carousel.Item key={index.toString()}>
                                                         <img
                                                             className="d-block"
-                                                            src={item.Image}
+                                                            src={'../../assets/images/big/img6.jpg'}
                                                             alt={`${index} slide`}
                                                             style={{ maxHeight: '300px' }}
                                                         />
@@ -73,7 +80,7 @@ export default class Home extends Component {
                                         <div className="card">
                                             <img
                                                 className="d-block"
-                                                src={item.Image}
+                                                src={'../../assets/images/big/img3.jpg'}
                                                 alt="First slide"
                                                 style={{ maxHeight: '300px' }}
                                             />
@@ -99,7 +106,7 @@ export default class Home extends Component {
                                         <div className="card">
                                             <img
                                                 className="d-block"
-                                                src={item.Image}
+                                                src={'../../assets/images/big/img4.jpg'}
                                                 alt="First slide"
                                                 style={{ maxHeight: '300px' }}
                                             />

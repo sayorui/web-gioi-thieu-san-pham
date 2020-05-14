@@ -1,13 +1,15 @@
 const API_ROUTE = 'https://localhost:44344'
 
 var API = {
+    // GET tìm kiếm theo tiêu đề
     getPostDetail(title) {
-        console.log(5, API_ROUTE + '/api/Posts/' + title)
-        return fetch(API_ROUTE + '/api/Posts/' + title, {
-            method: 'GET',
+        console.log(5, API_ROUTE + '/api/Posts/title')
+        return fetch(API_ROUTE + '/api/Posts/title', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify('title:' + title),
         })
             .then(res => {
                 return res.json()
@@ -49,6 +51,32 @@ var API = {
             .catch(err => {
                 console.log(err);
             })
+    },
+
+    //GET 5 latest
+    getLatest() {
+        return fetch(API_ROUTE + '/api/Posts/Latest', {
+            method: 'GET'
+        })
+        .then(res => {
+            return res.json()
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    },
+
+    //GET phân trang
+    getPaging(page) {
+        return fetch(API_ROUTE + '/api/Posts/page/' + page, {
+            method: 'GET'
+        })
+        .then(res => {
+            return res.json()
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 }
 

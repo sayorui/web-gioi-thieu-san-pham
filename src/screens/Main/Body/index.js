@@ -4,16 +4,26 @@ import { Carousel } from "react-bootstrap";
 import Home from '../Home';
 import { Route } from 'react-router-dom';
 import Detail from '../../Detail';
+import API from '../../../api'
 
 export default class Body extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            listLatest: []
         }
     }
 
+    async componentDidMount() {
+        API.getLatest().then(res => {
+            if (res && res.length > 0) {
+                this.setState({listLatest: res})
+    }
+        })
+    }
+
     render() {
+        const listLatest  = this.state.listLatest;
         return (
             <>
                 {/* Page */}
@@ -33,21 +43,15 @@ export default class Body extends Component {
                     <nav className="sidebar-nav">
                         <input placeholder="Tìm kiếm" aria-label="Tìm kiếm" aria-describedby="basic-addon1" className="form-control" style={{ display: 'inline-block', width: '90%' }} />
                         <ul id="sidebarnav" className="in">
-                            <li className="sidebar-item">
-                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 1</a>
-                            </li>
-                            <li className="sidebar-item">
-                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 2</a>
-                            </li>
-                            <li className="sidebar-item">
-                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 3</a>
-                            </li>
-                            <li className="sidebar-item">
-                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 4</a>
-                            </li>
-                            <li className="sidebar-item">
-                                <a className="sidebar-link has-arrow waves-effect waves-dark">Link 5</a>
-                            </li>
+                            {
+                                listLatest.map((item,index) => {
+                                    return (
+                                        <li className="sidebar-item">
+                                            <a className="sidebar-link has-arrow waves-effect waves-dark">{item.title}</a>
+                                        </li>
+                                    )
+                                })
+                            }
                         </ul>
                     </nav>
                 </aside>
