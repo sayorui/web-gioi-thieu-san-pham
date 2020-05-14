@@ -3,13 +3,12 @@ const API_ROUTE = 'https://localhost:44344'
 var API = {
     // GET tìm kiếm theo tiêu đề
     getPostDetail(title) {
-        console.log(5, API_ROUTE + '/api/Posts/title')
         return fetch(API_ROUTE + '/api/Posts/title', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify('title:' + title),
+            body: JSON.stringify(title),
         })
             .then(res => {
                 return res.json()
@@ -37,13 +36,13 @@ var API = {
             })
     },
     // POST EXAMPLE
-    postSomeThing(data) {
+    savePost({ title, content }) {
         return fetch(API_ROUTE + '/api/Posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ Title: title, Content: content })
         })
             .then(res => {
                 return res.json()
@@ -58,12 +57,12 @@ var API = {
         return fetch(API_ROUTE + '/api/Posts/Latest', {
             method: 'GET'
         })
-        .then(res => {
-            return res.json()
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(res => {
+                return res.json()
+            })
+            .catch(err => {
+                console.log(err);
+            })
     },
 
     //GET phân trang
@@ -71,12 +70,12 @@ var API = {
         return fetch(API_ROUTE + '/api/Posts/page/' + page, {
             method: 'GET'
         })
-        .then(res => {
-            return res.json()
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(res => {
+                return res.json()
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 }
 
