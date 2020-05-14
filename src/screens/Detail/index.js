@@ -1,21 +1,21 @@
 import React, { Component, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../../api';
+import { getTitleToSearch } from '../../utility/function';
 
 const Detail = (props) => {
     const params = useParams();
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        console.log(8, params)
-        API.getPostDetail(params.title).then(res => {
+        let title = getTitleToSearch(params.title);
+        console.log(11, title)
+        API.getPostDetail(title).then(res => {
             if (res && res.length > 0) {
                 setData(res[0])
             }
         })
     }, [])
-
-    console.log(18, data)
 
     return (
         <>

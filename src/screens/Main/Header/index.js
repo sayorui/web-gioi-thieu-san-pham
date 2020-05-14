@@ -1,38 +1,35 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
     render() {
         return (
             <>
-                <div>
+                <div style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100, paddingLeft: 250 }}>
                     <h1>IZUMIO JAPAN</h1>
                     <h4>Nhập Khẩu Chính Hãng Nội Địa Nhật Bản</h4>
-                </div>
-                <header className="header-bar" data-navbarbg="skin6" id="header-bar">
-                    <nav className="navbar top-navbar navbar-expand-md navbar-light" style={{ marginLeft: '250px' }}>
-                        <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky">
-                            {/* Left */}
-                            <ul className="navbar-nav float-left mr-auto">
-                                <li className="nav-item d-none d-md-block">
-                                    <a className="nav-link sidebartoggler waves-effect waves-light">Home</a>
-                                </li>
-                                <li className="nav-item d-none d-md-block">
-                                    <a className="nav-link sidebartoggler waves-effect waves-light">Sản phẩm 1</a>
-                                </li>
-                                <li className="nav-item d-none d-md-block">
-                                    <a className="nav-link sidebartoggler waves-effect waves-light">Sản phẩm 2</a>
-                                </li>
-                                <li className="nav-item d-none d-md-block">
-                                    <a className="nav-link sidebartoggler waves-effect waves-light">Sản phẩm 3</a>
-                                </li>
-                            </ul>
-                            {/* Right */}
-                            <ul className="navbar-nav float-right">
+                    <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{}}>
+                        <nav className="navbar top-navbar navbar-expand-md navbar-light" >
+                            <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky">
+                                {/* Left */}
+                                <ul className="navbar-nav float-left mr-auto">
+                                    <li className="nav-item d-none d-md-block">
+                                        <Link
+                                            to={`./`}
+                                            className="nav-link sidebartoggler waves-effect waves-light"
+                                        >
+                                            Home
+                                        </Link>
+                                    </li>
+                                </ul>
+                                {/* Right */}
+                                <ul className="navbar-nav float-right">
 
-                            </ul>
-                        </div>
-                    </nav>
-                </header>
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
+                </div>
             </>
         )
     }

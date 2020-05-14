@@ -25,8 +25,8 @@ export default class Home extends Component {
 
         API.getPaging(1).then(res => {
             if (res && res.length > 0) {
-                this.setState({listTimHieuSanPham: res,listBaiVietMoi: res})
-    }
+                this.setState({ listTimHieuSanPham: res, listBaiVietMoi: res })
+            }
         })
         //this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
     }
@@ -42,28 +42,29 @@ export default class Home extends Component {
                     <div className="row">
                         <div className="col-3"></div>
                         {/* <div className="col-6"> */}
-                            <div className="card">
-                                <div className="card-body">
-                                    <Carousel>
-                                        {
-                                            listTimHieuSanPham.map((item, index) => {
-                                                return (
-                                                    <Carousel.Item key={index.toString()}>
-                                                        <img
-                                                            className="d-block"
-                                                            src={'../../assets/images/big/img6.jpg'}
-                                                            alt={`${index} slide`}
-                                                            style={{ maxHeight: '300px' }}
-                                                        />
-                                                        <Carousel.Caption>
-                                                            <div dangerouslySetInnerHTML={{ __html: item.Content }}></div>
-                                                        </Carousel.Caption>
-                                                    </Carousel.Item>
-                                                )
-                                            })
-                                        }
-                                    </Carousel>
-                                </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <Carousel>
+                                    {
+                                        listTimHieuSanPham.map((item, index) => {
+                                            return (
+                                                <Carousel.Item key={index.toString()}>
+                                                    <img
+                                                        className="d-block"
+                                                        src={'../../assets/images/big/img6.jpg'}
+                                                        alt={`${index} slide`}
+                                                        style={{ maxHeight: '300px' }}
+                                                    />
+                                                    <Carousel.Caption>
+                                                        {item.title}
+                                                        <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                                                    </Carousel.Caption>
+                                                </Carousel.Item>
+                                            )
+                                        })
+                                    }
+                                </Carousel>
+                            </div>
                             {/* </div> */}
                         </div>
                     </div>
@@ -74,7 +75,6 @@ export default class Home extends Component {
                         {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listTimHieuSanPham */}
                         {
                             listTimHieuSanPham.map((item, index) => {
-                                console.log(item)
                                 return (
                                     <div className="col-6" key={index.toString()}>
                                         <div className="card">
@@ -85,7 +85,7 @@ export default class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                                <div dangerouslySetInnerHTML={{ __html: item.Content }}></div>
+                                                {item.title}
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +100,6 @@ export default class Home extends Component {
                         {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listBaiVietMoi */}
                         {
                             listBaiVietMoi.map((item, index) => {
-                                console.log(item)
                                 return (
                                     <div className="col-6" key={index.toString()}>
                                         <div className="card">
@@ -111,7 +110,7 @@ export default class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                                <div dangerouslySetInnerHTML={{ __html: item.Content }}></div>
+                                                {item.title}
                                             </div>
                                         </div>
                                     </div>

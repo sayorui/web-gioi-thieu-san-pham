@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import CKEditor from 'ckeditor4-react';
+import API from '../../api';
+import { withRouter } from 'react-router-dom'
+import { getTitleRouteName } from '../../utility/function';
 
 // import '../node_modules/ckeditor-youtube-plugin/youtube';
 
@@ -13,16 +16,31 @@ import CKEditor from 'ckeditor4-react';
 // CKEditor.editorUrl = require('./ckeditor/ckeditor');
 // CKEditor.editorUrl = 'https://cdn.ckeditor.com/4.14.0/standard-all/ckeditor.js';
 
-export default class Post extends Component {
+class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: "<p>Hello from CKEditor 4!</p>",
+            title: ''
         }
     }
 
+    savePost() {
+        const { title, data } = this.state;
+        API.savePost({ title, content: data }).then(res => {
+            console.log(31, res)
+            if (res) {
+                let titleRoute = getTitleRouteName(res.title);
+                console.log(34, titleRoute)
+                this.props.history.push(`../${titleRoute}`)
+            }
+        }).catch(err => {
+            console.log(38, err)
+        })
+    }
+
     render() {
-        const { data } = this.state;
+        const { data, title } = this.state;
 
         return (
             <>
@@ -40,10 +58,10 @@ export default class Post extends Component {
                                 </div>
 
                                 <div className="card-body">
-                                    <h4 class="card-title">Tiêu đề bài viết</h4>
+                                    <h4 className="card-title">Tiêu đề bài viết</h4>
                                     <div className="form-group" style={{ display: 'flex' }}>
-                                        <input type="text" class="form-control" />
-                                        <button type="submit" class="btn btn-success" style={{ marginLeft: 20 }}> <i class="fa fa-check"></i> Save</button>
+                                        <input type="text" className="form-control" value={title} onChange={(event) => this.setState({ title: event.target.value })} />
+                                        <button type="submit" className="btn btn-success" style={{ marginLeft: 20 }} onClick={() => this.savePost()}> <i className="fa fa-check"></i> Save</button>
                                     </div>
                                     <CKEditor
                                         data={data}
@@ -73,3 +91,5 @@ export default class Post extends Component {
         )
     }
 }
+
+export default withRouter(Post);
