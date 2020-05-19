@@ -23,20 +23,31 @@ class Post extends Component {
             data: "<p>Hello from CKEditor 4!</p>",
             title: ''
         }
+        this.html = React.createRef()
     }
 
     savePost() {
         const { title, data } = this.state;
-        API.savePost({ title, content: data }).then(res => {
-            console.log(31, res)
-            if (res) {
-                let titleRoute = getTitleRouteName(res.title);
-                console.log(34, titleRoute)
-                this.props.history.push(`../${titleRoute}`)
-            }
-        }).catch(err => {
-            console.log(38, err)
-        })
+        console.log(30, data)
+        // console.log(this.html.)
+        var list = this.html.getElementsByTagName("iframe")[0];
+        if (list) {
+            console.log(34, list)
+            var iframe_src = list.src;
+            var youtube_video_id = iframe_src.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+            console.log(38, youtube_video_id)
+            console.log(`https://img.youtube.com/vi/${youtube_video_id}/0.jpg`)
+        }
+        // API.savePost({ title, content: data }).then(res => {
+        //     console.log(31, res)
+        //     if (res) {
+        //         let titleRoute = res.unsignedTitle;
+        //         // console.log(34, titleRoute)
+        //         this.props.history.push(`../${titleRoute}`)
+        //     }
+        // }).catch(err => {
+        //     console.log(38, err)
+        // })
     }
 
     render() {
@@ -81,7 +92,7 @@ class Post extends Component {
                                     </h4>
                                 </div>
                                 <div className="card-body">
-                                    <div dangerouslySetInnerHTML={{ __html: data }}></div>
+                                    <div dangerouslySetInnerHTML={{ __html: data }} ref={ref => this.html = ref}></div>
                                 </div>
                             </div>
                         </div>

@@ -8,14 +8,17 @@ const Detail = (props) => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
+        console.log(11, params.title)
         let title = getTitleToSearch(params.title);
         console.log(11, title)
         API.getPostDetail(title).then(res => {
             if (res && res.length > 0) {
                 setData(res[0])
             }
+        }).catch(err => {
+            console.log(18, err)
         })
-    }, [])
+    }, [params])
 
     return (
         <>

@@ -57,7 +57,7 @@ export default class Home extends Component {
                                                     />
                                                     <Carousel.Caption>
                                                         {item.title}
-                                                        <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                                                        {/* <div dangerouslySetInnerHTML={{ __html: item.content }}></div> */}
                                                     </Carousel.Caption>
                                                 </Carousel.Item>
                                             )

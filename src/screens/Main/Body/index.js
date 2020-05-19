@@ -50,6 +50,7 @@ export default class Body extends Component {
                                     return (
                                         <li className="sidebar-item" key={index.toString()}>
                                             <Link
+                                                // to={`./${item.title}`}
                                                 to={`./${getTitleRouteName(item.title)}`}
                                                 className="sidebar-link has-arrow waves-effect waves-dark"
                                             >
