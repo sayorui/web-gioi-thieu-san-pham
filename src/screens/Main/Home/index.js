@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Carousel } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import API from '../../../api'
 
 const fakeData = [
@@ -10,7 +11,7 @@ const fakeData = [
     { ID: 5, Title: '', Image: '../../assets/images/big/img3.jpg', Content: ` <h4 className="card-title">Card title</h4><p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>` },
 ]
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,6 +32,16 @@ export default class Home extends Component {
         //this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
     }
 
+    viewDetail(id) {
+        API.getPostById(id).then(res => {
+            if (res) {
+                let titleRoute = res.title;
+                this.props.history.push(`../${titleRoute}`)
+            }
+        }).catch(err => {
+            console.log(38, err)
+        })
+    }
 
     render() {
         const { listTimHieuSanPham, listBaiVietMoi } = this.state;
@@ -56,7 +67,7 @@ export default class Home extends Component {
                                                         style={{ maxHeight: '300px' }}
                                                     />
                                                     <Carousel.Caption>
-                                                        {item.title}
+                                                        <a onClick={() => this.viewDetail(item.id)}>{item.title}</a>
                                                         {/* <div dangerouslySetInnerHTML={{ __html: item.content }}></div> */}
                                                     </Carousel.Caption>
                                                 </Carousel.Item>
@@ -85,7 +96,7 @@ export default class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                                {item.title}
+                                            <a onClick={() => this.viewDetail(item.id)}>{item.title}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +121,7 @@ export default class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                                {item.title}
+                                            <a onClick={() => this.viewDetail(item.id)}>{item.title}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -123,3 +134,5 @@ export default class Home extends Component {
         )
     }
 }
+
+export default withRouter(Home);

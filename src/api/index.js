@@ -17,19 +17,13 @@ var API = {
                 console.log(err);
             })
     },
-    // GET EXAMPLE
-    getSomeThing(id) {
-        return fetch(API_ROUTE + id, {
+    // GET post bằng id
+    getPostById(id) {
+        return fetch(API_ROUTE + '/api/Posts/' + id, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
         })
             .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
+                return res.json();
             })
             .catch(err => {
                 console.log(err);
