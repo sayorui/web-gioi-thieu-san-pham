@@ -62,7 +62,7 @@ class Home extends Component {
                                                 <Carousel.Item key={index.toString()}>
                                                     <img
                                                         className="d-block"
-                                                        src={item.coverImage}
+                                                        src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
                                                         alt={`${index} slide`}
                                                         style={{ maxHeight: '300px' }}
                                                     />
@@ -91,7 +91,7 @@ class Home extends Component {
                                         <div className="card">
                                             <img
                                                 className="d-block"
-                                                src={item.coverImage}
+                                                src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
                                                 alt="First slide"
                                                 style={{ maxHeight: '300px' }}
                                             />
@@ -116,7 +116,7 @@ class Home extends Component {
                                         <div className="card">
                                             <img
                                                 className="d-block"
-                                                src={item.coverImage}
+                                                src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
                                                 alt="First slide"
                                                 style={{ maxHeight: '300px' }}
                                             />
