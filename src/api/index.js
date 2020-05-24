@@ -1,4 +1,5 @@
-const API_ROUTE = 'https://localhost:44344'
+// const API_ROUTE = 'https://localhost:44344'
+const API_ROUTE = 'https://giangwebapi.azurewebsites.net';
 
 var API = {
     // GET tìm kiếm theo tiêu đề
@@ -30,13 +31,13 @@ var API = {
             })
     },
     // POST EXAMPLE
-    savePost({ title, content }) {
+    savePost({ title, content, coverImage }) {
         return fetch(API_ROUTE + '/api/Posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ Title: title, Content: content })
+            body: JSON.stringify({ Title: title, Content: content, CoverImage: coverImage })
         })
             .then(res => {
                 return res.json()

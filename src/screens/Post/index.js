@@ -28,26 +28,24 @@ class Post extends Component {
 
     savePost() {
         const { title, data } = this.state;
-        console.log(30, data)
-        // console.log(this.html.)
         var list = this.html.getElementsByTagName("iframe")[0];
+        let coverImage = '';
         if (list) {
             console.log(34, list)
-            var iframe_src = list.src;
-            var youtube_video_id = iframe_src.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-            console.log(38, youtube_video_id)
-            console.log(`https://img.youtube.com/vi/${youtube_video_id}/0.jpg`)
+            var iframe_src = list.src.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
+            var youtube_video_id = iframe_src ? iframe_src.pop() : null;
+            if (youtube_video_id) {
+                coverImage = `https://img.youtube.com/vi/${youtube_video_id}/0.jpg`;
+            }
         }
-        // API.savePost({ title, content: data }).then(res => {
-        //     console.log(31, res)
-        //     if (res) {
-        //         let titleRoute = res.unsignedTitle;
-        //         // console.log(34, titleRoute)
-        //         this.props.history.push(`../${titleRoute}`)
-        //     }
-        // }).catch(err => {
-        //     console.log(38, err)
-        // })
+        API.savePost({ title, content: data, coverImage }).then(res => {
+            if (res) {
+                let titleRoute = res.unsignedTitle;
+                this.props.history.push(`../${titleRoute}`)
+            }
+        }).catch(err => {
+            
+        })
     }
 
     render() {
