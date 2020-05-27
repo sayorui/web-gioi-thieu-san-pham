@@ -15,8 +15,13 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            listCarousal: [],
             listTimHieuSanPham: [],
+            spPage:  1,
+            spTotalpage: 0,
             listBaiVietMoi: [],
+            bvPage: 0,
+            bvTotalpage: 0,
         }
     }
 
@@ -24,12 +29,36 @@ class Home extends Component {
         // Gọi API ở đây
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
 
-        API.getPaging(1).then(res => {
-            if (res && res.length > 0) {
-                this.setState({ listTimHieuSanPham: res, listBaiVietMoi: res })
+        API.getPaging(1, 0).then(res => {
+            if (res) {
+                this.setState({ listCarousal: res.items })
             }
         })
+
+        this.getPagingSanPham(1);
+        this.getPagingBaiViet(1);
+        
         //this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
+    }
+
+    getPagingBaiViet(page) {
+        API.getPaging(page, 1).then(res => {
+            if (res) {
+                this.setState({ listBaiVietMoi: res.items, 
+                    spPage: res.page, 
+                    spTotalpage: res.totalPage })
+            }
+        })
+    }
+
+    getPagingSanPham(page) {
+        API.getPaging(page, 2).then(res => {
+            if (res) {
+                this.setState({ listTimHieuSanPham: res.items, 
+                    bvPage: res.page, 
+                    bvTotalpage: res.totalPage })
+            }
+        })
     }
 
     viewDetail(id) {
@@ -45,6 +74,19 @@ class Home extends Component {
 
     render() {
         const { listTimHieuSanPham, listBaiVietMoi } = this.state;
+        let spPageGroup = [];
+        for (let i = 0; i< this.state.spTotalpage;i++){
+            spPageGroup.push(
+                <li class="page-item"><a className="page-link" onClick={() => this.getPagingSanPham(i+1)}>{i+1}</a></li>
+            )
+        }
+
+        let bvPageGroup = [];
+        for (let i = 0; i< this.state.bvTotalpage;i++){
+            bvPageGroup.push(
+                <li class="page-item"><a className="page-link" onClick={() => this.getPagingBaiViet(i+1)}>{i+1}</a></li>
+            )
+        }
 
         return (
             <>
@@ -59,7 +101,7 @@ class Home extends Component {
                                     {
                                         listTimHieuSanPham.map((item, index) => {
                                             return (
-                                                <Carousel.Item key={index.toString()}>
+                                                <Carousel.Item key={index.toString()} onClick={() => this.viewDetail(item.id)}>
                                                     <img
                                                         className="d-block"
                                                         src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
@@ -67,8 +109,7 @@ class Home extends Component {
                                                         style={{ maxHeight: '300px' }}
                                                     />
                                                     <Carousel.Caption>
-                                                        <a onClick={() => this.viewDetail(item.id)}>{item.title}</a>
-                                                        {/* <div dangerouslySetInnerHTML={{ __html: item.content }}></div> */}
+                                                        {item.title}
                                                     </Carousel.Caption>
                                                 </Carousel.Item>
                                             )
@@ -88,7 +129,7 @@ class Home extends Component {
                             listTimHieuSanPham.map((item, index) => {
                                 return (
                                     <div className="col-6" key={index.toString()}>
-                                        <div className="card">
+                                        <div className="card" onClick={() => this.viewDetail(item.id)}>
                                             <img
                                                 className="d-block"
                                                 src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
@@ -96,13 +137,21 @@ class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                            <a onClick={() => this.viewDetail(item.id)}>{item.title}</a>
+                                            {item.title}
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })
                         }
+                        
+                    </div>
+                    <div>
+                        <ul className="pagination">
+                            <li class="page-item"><a className="page-link">«</a></li>
+                            {spPageGroup}
+                            <li class="page-item"><a className="page-link">»</a></li>
+                        </ul>
                     </div>
                 </section>
                 <section id="Bài viết mới">
@@ -113,7 +162,7 @@ class Home extends Component {
                             listBaiVietMoi.map((item, index) => {
                                 return (
                                     <div className="col-6" key={index.toString()}>
-                                        <div className="card">
+                                        <div className="card" onClick={() => this.viewDetail(item.id)}>
                                             <img
                                                 className="d-block"
                                                 src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
@@ -121,13 +170,20 @@ class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                            <a onClick={() => this.viewDetail(item.id)}>{item.title}</a>
+                                            {item.title}
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })
                         }
+                    </div>
+                    <div>
+                        <ul className="pagination">
+                            <li class="page-item"><a className="page-link">«</a></li>
+                            {bvPageGroup}
+                            <li class="page-item"><a className="page-link">»</a></li>
+                        </ul>
                     </div>
                 </section>
             </>
