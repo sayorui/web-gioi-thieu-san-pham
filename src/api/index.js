@@ -31,14 +31,13 @@ var API = {
             })
     },
     // POST EXAMPLE
-    savePost({ title, content, type, coverImage }) {
-        var postType = parseInt(type);
-            return fetch(API_ROUTE + '/api/Posts', {
+    savePost(title, content, type, coverImage) {
+        return fetch(API_ROUTE + '/api/Posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ Title: title, Content: content, Type: postType, CoverImage: coverImage })
+            body: JSON.stringify({ Title: title, Content: content, Type: type, CoverImage: coverImage })
         })
             .then(res => {
                 return res.json()

@@ -29,6 +29,7 @@ class Post extends Component {
 
     savePost() {
         const { title, data, type } = this.state;
+        var postType = parseInt(type);
         var list = this.html.getElementsByTagName("iframe")[0];
         let coverImage = '';
         if (list) {
@@ -39,13 +40,13 @@ class Post extends Component {
                 coverImage = `https://img.youtube.com/vi/${youtube_video_id}/0.jpg`;
             }
         }
-        API.savePost({ title, content: data, type, coverImage }).then(res => {
+        API.savePost(title, data, postType, coverImage).then(res => {
             if (res) {
                 let titleRoute = res.unsignedTitle;
                 this.props.history.push(`../${titleRoute}`)
             }
         }).catch(err => {
-            
+
         })
     }
 
@@ -71,7 +72,7 @@ class Post extends Component {
                                     <h4 className="card-title">Tiêu đề bài viết</h4>
                                     <div className="form-group" style={{ display: 'flex' }}>
                                         <input type="text" className="form-control" value={title} onChange={(event) => this.setState({ title: event.target.value })} />
-                                        <select className="form-control" style={{marginLeft: 20, width: 150 }} value={type} onChange={(ev) => this.setState({type: ev.target.value})}>
+                                        <select className="form-control" style={{ marginLeft: 20, width: 150 }} value={type} onChange={(ev) => this.setState({ type: ev.target.value })}>
                                             <option value='1'>Bài viết mới</option>
                                             <option value='2'>Giới thiệu sản phẩm</option>
                                         </select>
