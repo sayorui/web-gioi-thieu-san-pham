@@ -21,13 +21,14 @@ class Post extends Component {
         super(props);
         this.state = {
             data: "<p>Hello from CKEditor 4!</p>",
-            title: ''
+            title: '',
+            type: '1',
         }
         this.html = React.createRef()
     }
 
     savePost() {
-        const { title, data } = this.state;
+        const { title, data, type } = this.state;
         var list = this.html.getElementsByTagName("iframe")[0];
         let coverImage = '';
         if (list) {
@@ -38,7 +39,7 @@ class Post extends Component {
                 coverImage = `https://img.youtube.com/vi/${youtube_video_id}/0.jpg`;
             }
         }
-        API.savePost({ title, content: data, coverImage }).then(res => {
+        API.savePost({ title, content: data, type, coverImage }).then(res => {
             if (res) {
                 let titleRoute = res.unsignedTitle;
                 this.props.history.push(`../${titleRoute}`)
@@ -49,7 +50,7 @@ class Post extends Component {
     }
 
     render() {
-        const { data, title } = this.state;
+        const { data, title, type } = this.state;
 
         return (
             <>
@@ -70,6 +71,10 @@ class Post extends Component {
                                     <h4 className="card-title">Tiêu đề bài viết</h4>
                                     <div className="form-group" style={{ display: 'flex' }}>
                                         <input type="text" className="form-control" value={title} onChange={(event) => this.setState({ title: event.target.value })} />
+                                        <select className="form-control" style={{marginLeft: 20, width: 150 }} value={type} onChange={(ev) => this.setState({type: ev.target.value})}>
+                                            <option value='1'>Bài viết mới</option>
+                                            <option value='2'>Giới thiệu sản phẩm</option>
+                                        </select>
                                         <button type="submit" className="btn btn-success" style={{ marginLeft: 20 }} onClick={() => this.savePost()}> <i className="fa fa-check"></i> Save</button>
                                     </div>
                                     <CKEditor

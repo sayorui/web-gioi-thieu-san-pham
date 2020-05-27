@@ -148,9 +148,7 @@ class Home extends Component {
                     </div>
                     <div>
                         <ul className="pagination">
-                            <li class="page-item"><a className="page-link">«</a></li>
                             {spPageGroup}
-                            <li class="page-item"><a className="page-link">»</a></li>
                         </ul>
                     </div>
                 </section>
@@ -180,9 +178,7 @@ class Home extends Component {
                     </div>
                     <div>
                         <ul className="pagination">
-                            <li class="page-item"><a className="page-link">«</a></li>
                             {bvPageGroup}
-                            <li class="page-item"><a className="page-link">»</a></li>
                         </ul>
                     </div>
                 </section>
