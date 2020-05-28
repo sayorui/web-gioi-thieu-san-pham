@@ -128,7 +128,7 @@ class Home extends Component {
                         {
                             listTimHieuSanPham.map((item, index) => {
                                 return (
-                                    <div className="col-6" key={index.toString()}>
+                                    <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
                                         <div className="card" onClick={() => this.viewDetail(item.id)}>
                                             <img
                                                 className="d-block"
@@ -159,7 +159,7 @@ class Home extends Component {
                         {
                             listBaiVietMoi.map((item, index) => {
                                 return (
-                                    <div className="col-6" key={index.toString()}>
+                                    <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
                                         <div className="card" onClick={() => this.viewDetail(item.id)}>
                                             <img
                                                 className="d-block"
