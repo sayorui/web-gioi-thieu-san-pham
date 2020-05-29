@@ -7345,7 +7345,8 @@ html[dir="ltr"] body .p-l-0 {
   #main-wrapper[data-layout="vertical"] .topbar .top-navbar .navbar-header {
     transition: 0.2s ease-in; }
   #main-wrapper[data-layout="vertical"][data-sidebartype="full"] .page-wrapper {
-    margin-left: 250px; }
+    margin-left: 250px; 
+  }
   #main-wrapper[data-layout="vertical"][data-sidebartype="iconbar"] .page-wrapper {
     margin-left: 180px; }
   #main-wrapper[data-layout="vertical"][data-sidebartype="iconbar"] .left-sidebar,
@@ -7680,7 +7681,6 @@ ul.list-style-none {
 Card
 ******************/
 .card {
-  cursor: pointer;
   margin-bottom: 20px; }
   .card .card-subtitle {
     font-weight: 300;
@@ -13708,3 +13708,7 @@ File: scss
 @media (max-width: 991.98px) {
   .do-block {
     display: block !important; } }
+
+#Home .card {
+  cursor: pointer;
+}

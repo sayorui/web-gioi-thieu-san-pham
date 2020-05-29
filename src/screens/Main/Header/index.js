@@ -11,6 +11,13 @@ export default class Header extends Component {
                     <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{}}>
                         <nav className="navbar top-navbar navbar-expand-md navbar-light" >
                             <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky">
+                                <a className="nav-link sidebartoggler waves-effect waves-light" href="#" data-sidebartype="mini-sidebar"
+                                    onClick={() => {
+
+                                    }}
+                                >
+                                    <i class="fas fa-bars"></i>
+                                </a>
                                 {/* Left */}
                                 <ul className="navbar-nav float-left mr-auto">
                                     <li className="nav-item d-none d-md-block">
@@ -30,6 +37,8 @@ export default class Header extends Component {
                         </nav>
                     </header>
                 </div>
+
+                
             </>
         )
     }

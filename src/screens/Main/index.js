@@ -11,9 +11,9 @@ export default class Main extends Component {
                 data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed"
                 data-header-position="fixed" data-boxed-layout="full" className=""
             >
-                <Header />
+                {/* <Header /> */}
                 <Body />
-                <Footer />
+                {/* <Footer /> */}
             </div>
         )
     }

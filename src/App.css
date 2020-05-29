@@ -63,3 +63,11 @@
 .textwidget {
   text-align: left;
 }
+
+#Home .card {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}

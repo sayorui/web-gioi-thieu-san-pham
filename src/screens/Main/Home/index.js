@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Carousel } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import API from '../../../api'
+import { getTitleRouteName } from '../../../utility/function'
 
 const fakeData = [
     { ID: 1, Title: '', Image: '../../assets/images/big/img6.jpg', Content: ` <h4 className="card-title">Card title</h4><p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>` },
@@ -17,7 +18,7 @@ class Home extends Component {
         this.state = {
             listCarousal: [],
             listTimHieuSanPham: [],
-            spPage:  1,
+            spPage: 1,
             spTotalpage: 0,
             listBaiVietMoi: [],
             bvPage: 0,
@@ -37,16 +38,18 @@ class Home extends Component {
 
         this.getPagingSanPham(1);
         this.getPagingBaiViet(1);
-        
+
         //this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
     }
 
     getPagingBaiViet(page) {
         API.getPaging(page, 1).then(res => {
             if (res) {
-                this.setState({ listBaiVietMoi: res.items, 
-                    spPage: res.page, 
-                    spTotalpage: res.totalPage })
+                this.setState({
+                    listBaiVietMoi: res.items,
+                    spPage: res.page,
+                    spTotalpage: res.totalPage
+                })
             }
         })
     }
@@ -54,9 +57,11 @@ class Home extends Component {
     getPagingSanPham(page) {
         API.getPaging(page, 2).then(res => {
             if (res) {
-                this.setState({ listTimHieuSanPham: res.items, 
-                    bvPage: res.page, 
-                    bvTotalpage: res.totalPage })
+                this.setState({
+                    listTimHieuSanPham: res.items,
+                    bvPage: res.page,
+                    bvTotalpage: res.totalPage
+                })
             }
         })
     }
@@ -64,7 +69,7 @@ class Home extends Component {
     viewDetail(id) {
         API.getPostById(id).then(res => {
             if (res) {
-                let titleRoute = res.title;
+                let titleRoute = getTitleRouteName(res.title);
                 this.props.history.push(`../${titleRoute}`)
             }
         }).catch(err => {
@@ -75,21 +80,21 @@ class Home extends Component {
     render() {
         const { listTimHieuSanPham, listBaiVietMoi } = this.state;
         let spPageGroup = [];
-        for (let i = 0; i< this.state.spTotalpage;i++){
+        for (let i = 0; i < this.state.spTotalpage; i++) {
             spPageGroup.push(
-                <li class="page-item"><a className="page-link" onClick={() => this.getPagingSanPham(i+1)}>{i+1}</a></li>
+                <li class="page-item"><a className="page-link" onClick={() => this.getPagingSanPham(i + 1)}>{i + 1}</a></li>
             )
         }
 
         let bvPageGroup = [];
-        for (let i = 0; i< this.state.bvTotalpage;i++){
+        for (let i = 0; i < this.state.bvTotalpage; i++) {
             bvPageGroup.push(
-                <li class="page-item"><a className="page-link" onClick={() => this.getPagingBaiViet(i+1)}>{i+1}</a></li>
+                <li class="page-item"><a className="page-link" onClick={() => this.getPagingBaiViet(i + 1)}>{i + 1}</a></li>
             )
         }
 
         return (
-            <>
+            <div id="Home">
                 {/* Carousel */}
                 <section id="Carousel">
                     <div className="row">
@@ -137,14 +142,14 @@ class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                            {item.title}
+                                                {item.title}
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })
                         }
-                        
+
                     </div>
                     <div>
                         <ul className="pagination">
@@ -168,7 +173,7 @@ class Home extends Component {
                                                 style={{ maxHeight: '300px' }}
                                             />
                                             <div className="card-body">
-                                            {item.title}
+                                                {item.title}
                                             </div>
                                         </div>
                                     </div>
@@ -182,7 +187,7 @@ class Home extends Component {
                         </ul>
                     </div>
                 </section>
-            </>
+            </div>
         )
     }
 }
