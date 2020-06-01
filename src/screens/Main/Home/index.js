@@ -46,9 +46,9 @@ class Home extends Component {
         API.getPaging(page, 1).then(res => {
             if (res) {
                 this.setState({
-                    listBaiVietMoi: res.items,
-                    spPage: res.page,
-                    spTotalpage: res.totalPage
+                    listBaiVietMoi: res.items || [],
+                    bvPage: res.page,
+                    bvTotalpage: res.totalPage
                 })
             }
         })
@@ -58,9 +58,9 @@ class Home extends Component {
         API.getPaging(page, 2).then(res => {
             if (res) {
                 this.setState({
-                    listTimHieuSanPham: res.items,
-                    bvPage: res.page,
-                    bvTotalpage: res.totalPage
+                    listTimHieuSanPham: res.items || [],
+                    spPage: res.page,
+                    spTotalpage: res.totalPage
                 })
             }
         })
@@ -78,18 +78,18 @@ class Home extends Component {
     }
 
     render() {
-        const { listTimHieuSanPham, listBaiVietMoi } = this.state;
+        const { listTimHieuSanPham, listBaiVietMoi, listCarousal } = this.state;
         let spPageGroup = [];
         for (let i = 0; i < this.state.spTotalpage; i++) {
             spPageGroup.push(
-                <li class="page-item"><a className="page-link" onClick={() => this.getPagingSanPham(i + 1)}>{i + 1}</a></li>
+                <li className="page-item"><a className="page-link" onClick={() => this.getPagingSanPham(i + 1)}>{i + 1}</a></li>
             )
         }
 
         let bvPageGroup = [];
         for (let i = 0; i < this.state.bvTotalpage; i++) {
             bvPageGroup.push(
-                <li class="page-item"><a className="page-link" onClick={() => this.getPagingBaiViet(i + 1)}>{i + 1}</a></li>
+                <li className="page-item"><a className="page-link" onClick={() => this.getPagingBaiViet(i + 1)}>{i + 1}</a></li>
             )
         }
 
@@ -97,14 +97,13 @@ class Home extends Component {
             <div id="Home">
                 {/* Carousel */}
                 <section id="Carousel">
-                    <div className="row">
-                        <div className="col-3"></div>
-                        {/* <div className="col-6"> */}
+                    <div className="row" style={{ justifyContent: 'center' }}>
+                        {/* <div className="col-3"></div> */}
                         <div className="card">
                             <div className="card-body">
                                 <Carousel>
                                     {
-                                        listTimHieuSanPham.map((item, index) => {
+                                        listCarousal.map((item, index) => {
                                             return (
                                                 <Carousel.Item key={index.toString()} onClick={() => this.viewDetail(item.id)}>
                                                     <img

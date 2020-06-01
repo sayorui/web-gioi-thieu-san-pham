@@ -1,5 +1,5 @@
-const API_ROUTE = 'https://localhost:44344'
-//const API_ROUTE = 'https://giangwebapi.azurewebsites.net';
+// const API_ROUTE = 'https://localhost:44344'
+const API_ROUTE = 'https://giangwebapi.azurewebsites.net';
 
 var API = {
     // GET tìm kiếm theo tiêu đề

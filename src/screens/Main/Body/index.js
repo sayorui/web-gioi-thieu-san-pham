@@ -80,6 +80,30 @@ export default class Body extends Component {
                                             Home
                                         </Link>
                                     </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            to={`#`}
+                                            className="nav-link sidebartoggler waves-effect waves-light"
+                                        >
+                                            Nước Giàu Hydro IZUMIO Nhật Bản
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            to={`#`}
+                                            className="nav-link sidebartoggler waves-effect waves-light"
+                                        >
+                                            Super Lutein Mirto+ Naturally Plus
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            to={`#`}
+                                            className="nav-link sidebartoggler waves-effect waves-light"
+                                        >
+                                            Khách Hàng Sử Dụng Đánh Giá – Review
+                                        </Link>
+                                    </li>
                                 </ul>
                                 {/* Right */}
                                 <ul className="navbar-nav float-right">
@@ -114,12 +138,13 @@ export default class Body extends Component {
                                             <Link
                                                 // to={`./${item.title}`}
                                                 to={`./${getTitleRouteName(item.title)}`}
-                                                className="sidebar-link has-arrow waves-effect waves-dark"
+                                                className="sidebar-link waves-effect waves-dark"
                                                 onClick={() => {
                                                     if (mobile && showSideBar) {
                                                         this.setState({ showSideBar: false })
                                                     }
                                                 }}
+                                                style={{ whiteSpace: 'normal' }}
                                             >
                                                 {item.title}
                                             </Link>
