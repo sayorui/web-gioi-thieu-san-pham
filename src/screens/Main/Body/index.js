@@ -82,7 +82,7 @@ export default class Body extends Component {
                                     </li>
                                     <li className="nav-item">
                                         <Link
-                                            to={`#`}
+                                            to={`./IZUMIO-la-gi?-Tai-sao-nuoc-giau-Hydro-IZUMIO-lai-chua-tri-duoc-hon-170-loai-benh-ly-?`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
                                         >
                                             Nước Giàu Hydro IZUMIO Nhật Bản
@@ -90,7 +90,7 @@ export default class Body extends Component {
                                     </li>
                                     <li className="nav-item">
                                         <Link
-                                            to={`#`}
+                                            to={`./super-lutein-mirto+-naturally-plus,-vien-uong-bo-sung-toan-dien-voi-13-duong-chat-sac-mau-huu-co`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
                                         >
                                             Super Lutein Mirto+ Naturally Plus
