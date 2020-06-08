@@ -24,7 +24,7 @@ const Detail = (props) => {
         <>
             <div className="card">
                 <div className="card-body">
-                    {data ? data.title : ''}
+                    <h3 style={{textTransform:'uppercase'}}>{data ? data.title : ''}</h3>
                 </div>
             </div>
             <div className="card">

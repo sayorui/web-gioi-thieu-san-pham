@@ -47,6 +47,22 @@ var API = {
             })
     },
 
+    updatePost(id, title, content, type, coverImage) {
+        return fetch(API_ROUTE + '/api/Posts', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ID: id, Title: title, Content: content, Type: type, CoverImage: coverImage })
+        })
+            .then(res => {
+                return res.json()
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    },
+
     //GET 5 latest
     getLatest() {
         return fetch(API_ROUTE + '/api/Posts/Latest', {
