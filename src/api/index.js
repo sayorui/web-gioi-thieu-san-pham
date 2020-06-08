@@ -87,6 +87,19 @@ var API = {
             .catch(err => {
                 console.log(err);
             })
+    },
+
+    //GET Tìm kiếm phân trang
+    getSearchPaging(page, title) {
+        return fetch(API_ROUTE + '/api/Posts/search/' + title + '/' + page, {
+            method: 'GET'
+        })
+            .then(res => {
+                return res.json()
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 }
 
