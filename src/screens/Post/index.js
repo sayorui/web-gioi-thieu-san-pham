@@ -25,6 +25,12 @@ class Post extends Component {
             type: '1',
         }
         this.html = React.createRef()
+        this.inputRef = React.createRef()
+        console.log('???')
+    }
+
+    componentDidMount() {
+        console.log(32, this.props)
     }
 
     savePost() {
@@ -50,6 +56,30 @@ class Post extends Component {
         })
     }
 
+    async onUploadFile(files) {
+        if (files) {
+            try {
+                const fileArray = Array.from(files)
+                const formData = new FormData()
+
+                // console.log(265, files)
+
+                fileArray.map((file, i) => {
+                    console.log(file)
+                    formData.append(file.name, file, file.name + 'anh_mau.jpg')
+                })
+
+                API.uploadImage(formData).then(res => {
+                    console.log(67, res)
+                })
+
+
+            } catch (ex) {
+                console.log(284, ex)
+            }
+        }
+    }
+
     render() {
         const { data, title, type } = this.state;
 
@@ -62,6 +92,10 @@ class Post extends Component {
                     <div className="page-wrapper" style={{ display: 'block', marginLeft: 0 }}>
                         <div className="container-fluid">
                             <div className="card">
+                                <button onClick={() => this.inputRef.current?.click()}>UploadImage</button>
+                                <input type="file" id={`upload-file`} multiple={false} ref={this.inputRef}
+                                    style={{ display: "none" }} onChange={(event) => this.onUploadFile(event.target.files)}
+                                />
                                 <div className="card-header">
                                     <h4>
                                         Nhập nội dung của bài viết

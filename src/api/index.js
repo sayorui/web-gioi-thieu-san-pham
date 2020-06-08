@@ -1,5 +1,5 @@
-// const API_ROUTE = 'https://localhost:44344'
-const API_ROUTE = 'https://giangwebapi.azurewebsites.net';
+const API_ROUTE = 'https://localhost:44344'
+// const API_ROUTE = 'https://giangwebapi.azurewebsites.net';
 
 var API = {
     // GET tìm kiếm theo tiêu đề
@@ -96,6 +96,23 @@ var API = {
         })
             .then(res => {
                 return res.json()
+                
+    // Upload Image
+    uploadImage(formData) {
+        return fetch(API_ROUTE + '/api/Posts/image', {
+            method: 'POST',
+            headers: {
+                // Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: formData
+        })
+            .then(res => {
+                if (res.ok) {
+                    console.log(88, res)
+                    return res.json()
+                }
+                // return res?.json()
             })
             .catch(err => {
                 console.log(err);
