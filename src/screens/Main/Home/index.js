@@ -126,7 +126,7 @@ class Home extends Component {
                     </div>
                 </section>
                 <section id="Tìm hiểu sản phẩm">
-                    <h4>Tìm hiểu về sản phẩm</h4>
+                    <h2>Tìm hiểu về sản phẩm</h2>
                     <div className="row">
                         {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listTimHieuSanPham */}
                         {
@@ -157,7 +157,7 @@ class Home extends Component {
                     </div>
                 </section>
                 <section id="Bài viết mới">
-                    <h4>Bài viết mới</h4>
+                    <h2>Bài viết mới</h2>
                     <div className="row">
                         {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listBaiVietMoi */}
                         {

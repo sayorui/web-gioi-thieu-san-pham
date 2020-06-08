@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Main from './screens/Main';
 import Post from './screens/Post';
+import Edit from './screens/Post/Edit';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Switch>
           <Route path="/new" exact>
             <Post />
+          </Route>
+          <Route path="/edit/:id" exact>
+            <Edit />
           </Route>
             <Main />
         </Switch>
