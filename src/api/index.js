@@ -96,7 +96,12 @@ var API = {
         })
             .then(res => {
                 return res.json()
-                
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    },
+    
     // Upload Image
     uploadImage(formData) {
         return fetch(API_ROUTE + '/api/Posts/image', {
