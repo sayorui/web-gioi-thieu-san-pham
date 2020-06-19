@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Carousel } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import API from '../../../api'
 import { getTitleRouteName } from '../../../utility/function'
 
@@ -105,16 +105,18 @@ class Home extends Component {
                                     {
                                         listCarousal.map((item, index) => {
                                             return (
-                                                <Carousel.Item key={index.toString()} onClick={() => this.viewDetail(item.id)}>
-                                                    <img
-                                                        className="d-block"
-                                                        src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
-                                                        alt={`${index} slide`}
-                                                        style={{ maxHeight: '300px' }}
-                                                    />
-                                                    <Carousel.Caption>
-                                                        {item.title}
-                                                    </Carousel.Caption>
+                                                <Carousel.Item key={index.toString()}>
+                                                    <Link to={`../${item.unsignedTitle}`}>
+                                                        <img
+                                                            className="d-block"
+                                                            src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
+                                                            alt={`${index} slide`}
+                                                            style={{ maxHeight: '300px' }}
+                                                        />
+                                                        <Carousel.Caption>
+                                                            {item.title}
+                                                        </Carousel.Caption>
+                                                    </Link>
                                                 </Carousel.Item>
                                             )
                                         })
@@ -133,22 +135,23 @@ class Home extends Component {
                             listTimHieuSanPham.map((item, index) => {
                                 return (
                                     <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
-                                        <div className="card" onClick={() => this.viewDetail(item.id)}>
-                                            <img
-                                                className="d-block"
-                                                src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
-                                                alt="First slide"
-                                                style={{ maxHeight: '300px' }}
-                                            />
-                                            <div className="card-body">
-                                                {item.title}
-                                            </div>
+                                        <div className="card" >
+                                            <Link to={`../${item.unsignedTitle}`}>
+                                                <img
+                                                    className="d-block"
+                                                    src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
+                                                    alt="First slide"
+                                                    style={{ maxHeight: '300px' }}
+                                                />
+                                                <div className="card-body">
+                                                    {item.title}
+                                                </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 )
                             })
                         }
-
                     </div>
                     <div>
                         <ul className="pagination">
@@ -164,16 +167,18 @@ class Home extends Component {
                             listBaiVietMoi.map((item, index) => {
                                 return (
                                     <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
-                                        <div className="card" onClick={() => this.viewDetail(item.id)}>
-                                            <img
-                                                className="d-block"
-                                                src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
-                                                alt="First slide"
-                                                style={{ maxHeight: '300px' }}
-                                            />
-                                            <div className="card-body">
-                                                {item.title}
-                                            </div>
+                                        <div className="card" >
+                                            <Link to={`../${item.unsignedTitle}`}>
+                                                <img
+                                                    className="d-block"
+                                                    src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
+                                                    alt="First slide"
+                                                    style={{ maxHeight: '300px' }}
+                                                />
+                                                <div className="card-body">
+                                                    {item.title}
+                                                </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 )

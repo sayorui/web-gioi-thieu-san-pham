@@ -17,16 +17,16 @@ class Edit extends Component {
     }
 
     async componentDidMount() {
-        let id = parseInt(this.props.match.params.id);
-        API.getPostById(id).then(res => {
-        console.log(32, res)
-        if (res) {
-                this.setState({ 
-                    id: res.id,
-                    data: res.content,
-                    title: res.title,
-                    type: res.type,
-                 })
+        let id = this.props.match.params.id;
+        API.getPostDetail(id).then(res => {
+            console.log(32, res)
+            if (res) {
+                this.setState({
+                    id: res[0].id,
+                    data: res[0].content,
+                    title: res[0].title,
+                    type: res[0].type,
+                })
             }
         }).catch(err => {
             console.log(18, err)
