@@ -159,16 +159,16 @@ export default class Body extends Component {
                 {/* Footer */}
                 <div style={{ marginLeft: showSideBar && !mobile ? 260 : 0 }}>
                     <div className="row">
-                        <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">NPP IZUMIO JAPAN</h3>
                             <div className="textwidget custom-html-widget">NPP IZUMIO JAPAN <br />
                             – Xuất xứ sản phẩm :  Nhật Bản<br />
                                 + Sản xuất tại: Shefco Co., Ltd. Kanuma Factory.<br />
                                 + Địa chỉ: 990-57 Higashiyama, Fukahodo, Kanuma – shi, Tochigi, Japan<br />
                                 # Hỗ trợ hướng dẫn mua hàng :<br />
-                                0968-01-8166</div>
+                                0982.877.559/ 079.4678933</div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">CAM KẾT CHẤT LƯỢNG</h3>
                             <div className="textwidget custom-html-widget">– Sản phẩm chất lượng, nhập khẩu chính hãng 100% từ Nhật Bản<br />
                             – Giao hàng miễn phí toàn quốc<br />
@@ -176,7 +176,7 @@ export default class Body extends Component {
                             ( Được kiểm chứng bởi hàng trăm người đã và đang dùng sản phẩm : <a href="http://izumiojapan.net/cau-chuyen-khach-hang-izumio-super-lutein-mirto-review/">xem tại đây</a> )
                         </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-12">
+                        {/* <div className="col-lg-3 col-md-6 col-sm-12">
                             <h3 className="widget-title">NPP IZUMIO JAPAN</h3>
                             <div className="textwidget custom-html-widget">NPP IZUMIO JAPAN <br />
                             – Xuất xứ sản phẩm :  Nhật Bản<br />
@@ -184,8 +184,8 @@ export default class Body extends Component {
                                 + Địa chỉ: 990-57 Higashiyama, Fukahodo, Kanuma – shi, Tochigi, Japan<br />
                                 # Hỗ trợ hướng dẫn mua hàng :<br />
                                 0968-01-8166</div>
-                        </div>
-                        <div className="col-lg-3 col-md-6 col-sm-12">
+                        </div> */}
+                        <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">CHI NHÁNH TRÊN TOÀN CẦU</h3>
                             <div className="textwidget custom-html-widget">
                                 <a rel="nofollow noopener noreferrer" href="http://www.naturally-plus.com/jp/ja/" target="_blank">  NHẬT BẢN </a><br />
