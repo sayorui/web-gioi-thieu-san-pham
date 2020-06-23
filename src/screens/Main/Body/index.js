@@ -7,69 +7,37 @@ import Detail from '../../Detail';
 import API from '../../../api'
 import Header from '../Header';
 import { getTitleRouteName } from '../../../utility/function';
+import Products from '../List posts/Products';
+import Reviews from '../List posts/Reviews';
 
 export default class Body extends Component {
     constructor(props) {
         super(props);
         this.state = {
             listLatest: [],
-            showSideBar: true,
             mobile: false,
         }
     }
 
     componentDidMount() {
-        API.getLatest().then(res => {
-            if (res && res.length > 0) {
-                this.setState({ listLatest: res })
-            }
-        })
-        this.calculateWindowWidth();
-        window.addEventListener('resize', this.calculateWindowWidth);
-        window.addEventListener('click', this.detectClick);
+        
     }
 
-    detectClick = (e) => {
-        if (e?.path && e.path[0]) {
-            if (e.path[0]?.id !== 'SideBar' && e.path[0]?.id !== 'OpenSideBar' && e.path[0]?.id !== 'IconOpenSideBar'
-                && e.path[0]?.id !== 'InputSideBar'
-                && this.state.mobile && this.state.showSideBar) {
-                this.setState({ showSideBar: false })
-            }
-        }
-    }
 
-    calculateWindowWidth = () => {
-        if (window.innerWidth < 576) {
-            this.setState({ showSideBar: false, mobile: true })
-        } else {
-            this.setState({ mobile: false })
-        }
-    }
     componentWillUnmount() {
-        window.removeEventListener('resize', this.calculateWindowWidth);
-        window.removeEventListener('click', this.detectClick);
     }
 
     render() {
-        const { listLatest, showSideBar, mobile } = this.state;
+        const { listLatest, mobile } = this.state;
         return (
             <>
                 {/* Header */}
-                <div id="Header" style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100, paddingLeft: showSideBar && !mobile ? 250 : 0 }}>
+                <div id="Header" style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100}}>
                     <h1>IZUMIO JAPAN</h1>
                     <h4>Nhập Khẩu Chính Hãng Nội Địa Nhật Bản</h4>
                     <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{}}>
                         <nav className="navbar top-navbar navbar-expand-md navbar-light" >
-                            <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky">
-                                <span id="OpenSideBar" className="nav-link sidebartoggler waves-effect waves-light"
-                                    href="#" data-sidebartype="mini-sidebar"
-                                    onClick={() => {
-                                        this.setState({ showSideBar: !showSideBar })
-                                    }}
-                                >
-                                    <i id="IconOpenSideBar" className="fas fa-bars"></i>
-                                </span>
+                            <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky" style={{ marginLeft: 250}}>
                                 {/* Left */}
                                 <ul className="navbar-nav float-left mr-auto">
                                     <li className="nav-item">
@@ -82,23 +50,15 @@ export default class Body extends Component {
                                     </li>
                                     <li className="nav-item">
                                         <Link
-                                            to={`./IZUMIO-la-gi?-Tai-sao-nuoc-giau-Hydro-IZUMIO-lai-chua-tri-duoc-hon-170-loai-benh-ly-?`}
+                                            to={`./gioi-thieu-san-pham`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
                                         >
-                                            Nước Giàu Hydro IZUMIO Nhật Bản
+                                            Giới thiệu sản phẩm
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link
-                                            to={`./super-lutein-mirto+-naturally-plus,-vien-uong-bo-sung-toan-dien-voi-13-duong-chat-sac-mau-huu-co`}
-                                            className="nav-link sidebartoggler waves-effect waves-light"
-                                        >
-                                            Super Lutein Mirto+ Naturally Plus
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link
-                                            to={`#`}
+                                            to={`./cau-chuyen-khach-hang`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
                                         >
                                             Khách Hàng Sử Dụng Đánh Giá – Review
@@ -115,7 +75,7 @@ export default class Body extends Component {
                 </div>
 
                 {/* Page */}
-                <div id="Page" className="page-wrapper" style={{ display: 'block', paddingTop: 140, marginLeft: showSideBar && !mobile ? 250 : 0 }}>
+                <div id="Page" className="page-wrapper" style={{ display: 'block', paddingTop: 140, marginRight: 250}}>
                     <div className="container-fluid">
                         <Route path="/" exact>
                             <Home />
@@ -123,42 +83,18 @@ export default class Body extends Component {
                         <Route path="/:title">
                             <Detail />
                         </Route>
+                        <Route path="/gioi-thieu-san-pham">
+                            <Products />
+                        </Route>
+                        <Route path="/cau-chuyen-khach-hang">
+                            <Reviews />
+                        </Route>
                     </div>
                 </div>
 
-                {/* Side bar - Left */}
-                <aside id="SideBar" className="left-sidebar" data-sidebarbg="skin1" style={{ zIndex: 100, display: showSideBar ? 'block' : 'none' }}>
-                    <nav className="sidebar-nav">
-                        <input id="InputSideBar" placeholder="Tìm kiếm" aria-label="Tìm kiếm" aria-describedby="basic-addon1" className="form-control" style={{ display: 'inline-block' }} />
-                        <ul id="sidebarnav" className="in">
-                            {
-                                listLatest.map((item, index) => {
-                                    return (
-                                        <li className="sidebar-item" key={index.toString()}>
-                                            <Link
-                                                // to={`./${item.title}`}
-                                                to={`./${getTitleRouteName(item.title)}`}
-                                                className="sidebar-link waves-effect waves-dark"
-                                                onClick={() => {
-                                                    if (mobile && showSideBar) {
-                                                        this.setState({ showSideBar: false })
-                                                    }
-                                                }}
-                                                style={{ whiteSpace: 'normal' }}
-                                            >
-                                                {item.title}
-                                            </Link>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </nav>
-                </aside>
-
                 {/* Footer */}
-                <div style={{ marginLeft: showSideBar && !mobile ? 260 : 0 }}>
-                    <div className="row">
+                <div>
+                    <div className="row"style={{marginLeft: 250, marginRight: 250 }}>
                         <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">NPP IZUMIO JAPAN</h3>
                             <div className="textwidget custom-html-widget">NPP IZUMIO JAPAN <br />
