@@ -114,7 +114,7 @@ export default class Body extends Component {
                             <div className="textwidget custom-html-widget">– Sản phẩm chất lượng, nhập khẩu chính hãng 100% từ Nhật Bản<br />
                             – Giao hàng miễn phí toàn quốc<br />
                             – SẢN PHẨM ĐẠT HIỆU QUẢ RÕ RỆT SAU 1 LIỆU TRÌNH SỬ DỤNG<br />
-                            ( Được kiểm chứng bởi hàng trăm người đã và đang dùng sản phẩm : <a href="http://izumiojapan.net/cau-chuyen-khach-hang-izumio-super-lutein-mirto-review/">xem tại đây</a> )
+                            ( Được kiểm chứng bởi hàng trăm người đã và đang dùng sản phẩm : <a href="https://gioi-thieu-izumo.web.app/">xem tại đây</a> )
                         </div>
                         </div>
                         {/* <div className="col-lg-3 col-md-6 col-sm-12">
