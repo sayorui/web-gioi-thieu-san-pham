@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { Carousel } from "react-bootstrap";
 import Home from '../Home';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Detail from '../../Detail';
 import API from '../../../api'
 import Header from '../Header';
@@ -20,7 +20,7 @@ export default class Body extends Component {
     }
 
     componentDidMount() {
-        
+
     }
 
 
@@ -32,18 +32,19 @@ export default class Body extends Component {
         return (
             <>
                 {/* Header */}
-                <div id="Header" style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100}}>
+                <div id="Header" style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100 }}>
                     <h1>IZUMIO JAPAN</h1>
                     <h4>Nhập Khẩu Chính Hãng Nội Địa Nhật Bản</h4>
-                    <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{}}>
+                    <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{ backgroundColor: 'CadetBlue' }}>
                         <nav className="navbar top-navbar navbar-expand-md navbar-light" >
-                            <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky" style={{ marginLeft: 250}}>
+                            <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky">
                                 {/* Left */}
-                                <ul className="navbar-nav float-left mr-auto">
+                                <ul className="navbar-nav float-left mr-auto" style={{ marginLeft: 250 }}>
                                     <li className="nav-item">
                                         <Link
                                             to={`./`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
+                                            style={{ color: 'white', fontWeight: 'bold' }}
                                         >
                                             Home
                                         </Link>
@@ -52,6 +53,7 @@ export default class Body extends Component {
                                         <Link
                                             to={`./gioi-thieu-san-pham`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
+                                            style={{ color: 'white', fontWeight: 'bold' }}
                                         >
                                             Giới thiệu sản phẩm
                                         </Link>
@@ -60,6 +62,7 @@ export default class Body extends Component {
                                         <Link
                                             to={`./cau-chuyen-khach-hang`}
                                             className="nav-link sidebartoggler waves-effect waves-light"
+                                            style={{ color: 'white', fontWeight: 'bold' }}
                                         >
                                             Khách Hàng Sử Dụng Đánh Giá – Review
                                         </Link>
@@ -75,26 +78,28 @@ export default class Body extends Component {
                 </div>
 
                 {/* Page */}
-                <div id="Page" className="page-wrapper" style={{ display: 'block', paddingTop: 140, marginRight: 250}}>
+                <div id="Page" className="page-wrapper" style={{ display: 'block', paddingTop: 140, marginRight: 250 }}>
                     <div className="container-fluid">
-                        <Route path="/" exact>
-                            <Home />
-                        </Route>
-                        <Route path="/:title">
-                            <Detail />
-                        </Route>
-                        <Route path="/gioi-thieu-san-pham">
-                            <Products />
-                        </Route>
-                        <Route path="/cau-chuyen-khach-hang">
-                            <Reviews />
-                        </Route>
+                        <Switch>
+                            <Route path="/" exact>
+                                <Home />
+                            </Route>
+                            <Route path="/gioi-thieu-san-pham" exact>
+                                <Products />
+                            </Route>
+                            <Route path="/cau-chuyen-khach-hang" exact>
+                                <Reviews />
+                            </Route>
+                            <Route path="/:title">
+                                <Detail />
+                            </Route>
+                        </Switch>
                     </div>
                 </div>
 
                 {/* Footer */}
                 <div>
-                    <div className="row"style={{marginLeft: 250, marginRight: 250 }}>
+                    <div className="row" style={{ marginLeft: 250, marginRight: 250 }}>
                         <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">NPP IZUMIO JAPAN</h3>
                             <div className="textwidget custom-html-widget">NPP IZUMIO JAPAN <br />
