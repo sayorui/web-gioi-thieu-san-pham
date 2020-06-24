@@ -44,7 +44,7 @@ class Products extends Component {
 
         return (
             <div id="Products">
-                <section id="Tìm hiểu sản phẩm">
+                <section id="Tìm hiểu về sản phẩm">
                     <h2>Tìm hiểu về sản phẩm</h2>
                     <div className="row">
                         {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listTimHieuSanPham */}

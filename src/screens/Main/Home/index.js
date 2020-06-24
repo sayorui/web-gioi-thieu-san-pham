@@ -12,14 +12,21 @@ const fakeData = [
     { ID: 5, Title: '', Image: '../../assets/images/big/img3.jpg', Content: ` <h4 className="card-title">Card title</h4><p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>` },
 ]
 
+const coverImage = [
+    { url: 'http://nuocizumio.com/wp-content/uploads/2020/04/02823fdddeb224ec7da3.jpg' },
+    { url: 'http://nuocizumio.com/wp-content/uploads/2020/04/784b9014717b8b25d26a.jpg' },
+]
+
+const listSP = [
+    { title:'izumio-la-gi-tai-sao-nuoc-giau-hydro-izumio-lai-chua-tri-duoc-hon-170-loai-benh-ly',urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/izumio-1-1-150x150.jpg', description: 'IZUMIO Nhật Bản là một loại nước uống giàu hàm lượng Hydro cao nhất thế giới với 2,6 triệu phân tử hydro trong mỗi túi 200ml. Được sản xuất tại Nhật Bản. Tác dụng của nước Hydro là tiêu diệt các gốc tự do ( Nguyên nhân gây ra mọi loại bệnh tật trong cơ thể con người ). Nước IZUMIO Có khả năng tăng cường sức khỏe phòng chống ngăn ngừa bệnh tật, hỗ trợ điều trị hiệu quả hơn 170 loại bệnh lý thường gặp, hỗ trợ cho cả những bệnh nhân K đang trong quá trình điều trị cải thiện sức khỏe nhanh hơn . Hàng trăm bệnh nhân ung thư trước, trong và sau giai đoạn hóa xạ trị đang dùng IZUMIO mỗi ngày .' },
+    { title:'super-lutein-mirto+-naturally-plus,-vien-uong-bo-sung-toan-dien-voi-13-duong-chat-sac-mau-huu-co',urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/mirtoplus-150x150.png', description: 'Super Lutein Mirto+ là thực phẩm chức năng dinh dưỡng cao cấp dạng viên nang mềm. Được nhập khẩu chính hãng từ Nhật Bản. Super Lutein Mirto + được sản xuất với 6 tinh chất carotenoids và 5 chất dinh dưỡng cần thiết từ Super Lutein. Đặc biệt trong viên Super Lutein Mirto + còn có Mirtogenol với 2 thành phần được cấp giấy chứng nhận độc quyền trên thế giới đó là Mirtoselect + Pycnogenol . Với tác dụng chống lão hóa da, tăng thị lực cho mắt hiệu quả gấp 4 lần .' },
+]
+
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             listCarousal: [],
-            listTimHieuSanPham: [],
-            spPage: 1,
-            spTotalpage: 0,
             listBaiVietMoi: [],
             bvPage: 0,
             bvTotalpage: 0,
@@ -30,40 +37,6 @@ class Home extends Component {
         // Gọi API ở đây
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
 
-        API.getPaging(1, 0).then(res => {
-            if (res) {
-                this.setState({ listCarousal: res.items })
-            }
-        })
-
-        this.getPagingSanPham(1);
-        this.getPagingBaiViet(1);
-
-        //this.setState({ listTimHieuSanPham: fakeData, listBaiVietMoi: fakeData })
-    }
-
-    getPagingBaiViet(page) {
-        API.getPaging(page, 1).then(res => {
-            if (res) {
-                this.setState({
-                    listBaiVietMoi: res.items || [],
-                    bvPage: res.page,
-                    bvTotalpage: res.totalPage
-                })
-            }
-        })
-    }
-
-    getPagingSanPham(page) {
-        API.getPaging(page, 2).then(res => {
-            if (res) {
-                this.setState({
-                    listTimHieuSanPham: res.items || [],
-                    spPage: res.page,
-                    spTotalpage: res.totalPage
-                })
-            }
-        })
     }
 
     viewDetail(id) {
@@ -78,14 +51,10 @@ class Home extends Component {
     }
 
     render() {
-        const { listTimHieuSanPham, listBaiVietMoi, listCarousal } = this.state;
-        let spPageGroup = [];
-        for (let i = 0; i < this.state.spTotalpage; i++) {
-            spPageGroup.push(
-                <li className="page-item"><a className="page-link" onClick={() => this.getPagingSanPham(i + 1)}>{i + 1}</a></li>
-            )
-        }
+        const { listBaiVietMoi, listCarousal } = this.state;
 
+        const review = this.state.listCarousal[0];
+        console.log(123, review);
         let bvPageGroup = [];
         for (let i = 0; i < this.state.bvTotalpage; i++) {
             bvPageGroup.push(
@@ -95,100 +64,49 @@ class Home extends Component {
 
         return (
             <div id="Home">
-                {/* Carousel */}
                 <section id="Carousel">
                     <div className="row" style={{ justifyContent: 'center' }}>
-                        {/* <div className="col-3"></div> */}
-                        <div className="card">
-                            <div className="card-body">
-                                <Carousel>
-                                    {
-                                        listCarousal.map((item, index) => {
-                                            return (
-                                                <Carousel.Item key={index.toString()}>
-                                                    <Link to={`../${item.unsignedTitle}`}>
-                                                        <img
-                                                            className="d-block"
-                                                            src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
-                                                            alt={`${index} slide`}
-                                                            style={{ maxHeight: '300px' }}
-                                                        />
-                                                        <Carousel.Caption>
-                                                            {item.title}
-                                                        </Carousel.Caption>
-                                                    </Link>
-                                                </Carousel.Item>
-                                            )
-                                        })
-                                    }
-                                </Carousel>
-                            </div>
-                            {/* </div> */}
-                        </div>
+                        <Carousel>
+                            {
+                                coverImage.map((item, index) => {
+                                    return (
+                                        <Carousel.Item key={index.toString()}>
+                                            <img
+                                                src={item.url}
+                                                alt={`${index} slide`}
+                                                style={{ maxHeight: '100%', maxWidth: '100%' }}
+                                            />
+                                        </Carousel.Item>
+                                    )
+                                })
+                            }
+                        </Carousel>
                     </div>
                 </section>
-                <section id="Tìm hiểu sản phẩm">
-                    <h2>Tìm hiểu về sản phẩm</h2>
+                <section id="Giới thiệu sản phẩm">
+                    <h2>Giới thiệu sản phẩm</h2>
                     <div className="row">
-                        {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listTimHieuSanPham */}
                         {
-                            listTimHieuSanPham.map((item, index) => {
+                            listSP.map((item, index) => {
                                 return (
-                                    <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
-                                        <div className="card" >
-                                            <Link to={`../${item.unsignedTitle}`}>
-                                                <img
-                                                    className="d-block"
-                                                    src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
-                                                    alt="First slide"
-                                                    style={{ maxHeight: '300px' }}
-                                                />
-                                                <div className="card-body">
-                                                    {item.title}
-                                                </div>
+                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
+                                        <div style={{ textAlign: 'center' }}>
+                                            <img
+                                                src={item.urlImage}
+                                            />
+                                            <div className="card-body">
+                                                {item.description}
+                                            </div>
+                                            <div style={{ textAlign: 'right' }}>
+                                            <Link to={`${item.title}`}>
+                                                Xem thêm...
                                             </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 )
                             })
                         }
-                    </div>
-                    <div>
-                        <ul className="pagination">
-                            {spPageGroup}
-                        </ul>
-                    </div>
-                </section>
-                <section id="Bài viết mới">
-                    <h2>Bài viết mới</h2>
-                    <div className="row">
-                        {/* Đoạn render sử dụng mảng, lấy dữ liệu từ state listBaiVietMoi */}
-                        {
-                            listBaiVietMoi.map((item, index) => {
-                                return (
-                                    <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
-                                        <div className="card" >
-                                            <Link to={`../${item.unsignedTitle}`}>
-                                                <img
-                                                    className="d-block"
-                                                    src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
-                                                    alt="First slide"
-                                                    style={{ maxHeight: '300px' }}
-                                                />
-                                                <div className="card-body">
-                                                    {item.title}
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                    <div>
-                        <ul className="pagination">
-                            {bvPageGroup}
-                        </ul>
                     </div>
                 </section>
             </div>

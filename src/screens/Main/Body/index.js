@@ -55,7 +55,7 @@ export default class Body extends Component {
                                             className="nav-link sidebartoggler waves-effect waves-light"
                                             style={{ color: 'white', fontWeight: 'bold' }}
                                         >
-                                            Giới thiệu sản phẩm
+                                            Tìm hiểu về sản phẩm
                                         </Link>
                                     </li>
                                     <li className="nav-item">
