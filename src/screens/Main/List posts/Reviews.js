@@ -18,6 +18,9 @@ class Reviews extends Component {
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
 
         this.getPagingBaiViet(1);
+
+        // Scroll về đầu trang 
+        window.scrollTo(0, 0);
     }
 
     getPagingBaiViet(page) {
@@ -27,6 +30,9 @@ class Reviews extends Component {
                     listBaiVietMoi: res.items || [],
                     page: res.page,
                     totalpage: res.totalPage
+                }, () => {
+                    // Scroll về đầu trang 
+                    window.scrollTo(0, 0);
                 })
             }
         })

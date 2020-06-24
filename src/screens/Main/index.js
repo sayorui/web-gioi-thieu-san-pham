@@ -14,6 +14,12 @@ export default class Main extends Component {
                 {/* <Header /> */}
                 <Body />
                 {/* <Footer /> */}
+                <a href="tel:0982.877.559" title="Call Now" className="btn-float">
+                    <div className="float">
+                        <i class="fas fa-phone-alt my-float"></i>
+                    </div>
+                    <div className="call-float">0982.877.559</div>
+                </a>
             </div>
         )
     }

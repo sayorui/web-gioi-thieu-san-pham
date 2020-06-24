@@ -71,3 +71,52 @@
 .flex {
   display: flex;
 }
+
+.btn-float {
+  position: fixed;
+  height: 60px;
+  bottom: 40px;
+  left: 40px;
+  background-color: #0C9;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	left:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 20;
+}
+
+.float:hover {
+  color: #fff;
+}
+
+.my-float{
+  margin-top:15px;
+  font-size: 30px;
+}
+
+.call-float {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: 180px;
+  background-color: #fff;
+  height: 50px;
+  border-radius: 50px;
+  line-height: 50px;
+  padding: 0px 20px;
+  color: #0C9;
+  z-index: 9;
+  font-size: 18px;
+  text-align: right;
+  font-weight: bold;
+  border: 1px solid #0C9;
+}

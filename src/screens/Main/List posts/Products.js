@@ -19,6 +19,8 @@ class Products extends Component {
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
 
         this.getPagingSanPham(1);
+        // Scroll về đầu trang 
+        window.scrollTo(0, 0);
     }
 
     getPagingSanPham(page) {
@@ -53,12 +55,12 @@ class Products extends Component {
                                 return (
                                     <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
                                         <div className="card" >
-                                            <Link to={`../${item.unsignedTitle}`}>
+                                            <Link to={`../${item.unsignedTitle}`} style={{}}>
                                                 <img
                                                     className="d-block"
                                                     src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
                                                     alt="First slide"
-                                                    style={{ maxHeight: '300px' }}
+                                                    style={{ height: '300px', width: '100%' }}
                                                 />
                                                 <div className="card-body">
                                                     {item.title}

@@ -20,11 +20,16 @@ const Detail = (props) => {
         })
     }, [params])
 
+    useEffect(() => {
+        // Scroll về đầu trang 
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
             <div className="card">
                 <div className="card-body">
-                    <h3 style={{textTransform:'uppercase'}}>{data ? data.title : ''}</h3>
+                    <h3 style={{ textTransform: 'uppercase' }}>{data ? data.title : ''}</h3>
                 </div>
             </div>
             <div className="card">

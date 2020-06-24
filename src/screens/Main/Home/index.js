@@ -18,8 +18,8 @@ const coverImage = [
 ]
 
 const listSP = [
-    { title:'izumio-la-gi-tai-sao-nuoc-giau-hydro-izumio-lai-chua-tri-duoc-hon-170-loai-benh-ly',urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/izumio-1-1-150x150.jpg', description: 'IZUMIO Nhật Bản là một loại nước uống giàu hàm lượng Hydro cao nhất thế giới với 2,6 triệu phân tử hydro trong mỗi túi 200ml. Được sản xuất tại Nhật Bản. Tác dụng của nước Hydro là tiêu diệt các gốc tự do ( Nguyên nhân gây ra mọi loại bệnh tật trong cơ thể con người ). Nước IZUMIO Có khả năng tăng cường sức khỏe phòng chống ngăn ngừa bệnh tật, hỗ trợ điều trị hiệu quả hơn 170 loại bệnh lý thường gặp, hỗ trợ cho cả những bệnh nhân K đang trong quá trình điều trị cải thiện sức khỏe nhanh hơn . Hàng trăm bệnh nhân ung thư trước, trong và sau giai đoạn hóa xạ trị đang dùng IZUMIO mỗi ngày .' },
-    { title:'super-lutein-mirto+-naturally-plus,-vien-uong-bo-sung-toan-dien-voi-13-duong-chat-sac-mau-huu-co',urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/mirtoplus-150x150.png', description: 'Super Lutein Mirto+ là thực phẩm chức năng dinh dưỡng cao cấp dạng viên nang mềm. Được nhập khẩu chính hãng từ Nhật Bản. Super Lutein Mirto + được sản xuất với 6 tinh chất carotenoids và 5 chất dinh dưỡng cần thiết từ Super Lutein. Đặc biệt trong viên Super Lutein Mirto + còn có Mirtogenol với 2 thành phần được cấp giấy chứng nhận độc quyền trên thế giới đó là Mirtoselect + Pycnogenol . Với tác dụng chống lão hóa da, tăng thị lực cho mắt hiệu quả gấp 4 lần .' },
+    { title: 'izumio-la-gi-tai-sao-nuoc-giau-hydro-izumio-lai-chua-tri-duoc-hon-170-loai-benh-ly', urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/izumio-1-1-150x150.jpg', description: 'IZUMIO Nhật Bản là một loại nước uống giàu hàm lượng Hydro cao nhất thế giới với 2,6 triệu phân tử hydro trong mỗi túi 200ml. Được sản xuất tại Nhật Bản. Tác dụng của nước Hydro là tiêu diệt các gốc tự do ( Nguyên nhân gây ra mọi loại bệnh tật trong cơ thể con người ). Nước IZUMIO Có khả năng tăng cường sức khỏe phòng chống ngăn ngừa bệnh tật, hỗ trợ điều trị hiệu quả hơn 170 loại bệnh lý thường gặp, hỗ trợ cho cả những bệnh nhân K đang trong quá trình điều trị cải thiện sức khỏe nhanh hơn . Hàng trăm bệnh nhân ung thư trước, trong và sau giai đoạn hóa xạ trị đang dùng IZUMIO mỗi ngày .' },
+    { title: 'super-lutein-mirto+-naturally-plus,-vien-uong-bo-sung-toan-dien-voi-13-duong-chat-sac-mau-huu-co', urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/mirtoplus-150x150.png', description: 'Super Lutein Mirto+ là thực phẩm chức năng dinh dưỡng cao cấp dạng viên nang mềm. Được nhập khẩu chính hãng từ Nhật Bản. Super Lutein Mirto + được sản xuất với 6 tinh chất carotenoids và 5 chất dinh dưỡng cần thiết từ Super Lutein. Đặc biệt trong viên Super Lutein Mirto + còn có Mirtogenol với 2 thành phần được cấp giấy chứng nhận độc quyền trên thế giới đó là Mirtoselect + Pycnogenol . Với tác dụng chống lão hóa da, tăng thị lực cho mắt hiệu quả gấp 4 lần .' },
 ]
 
 class Home extends Component {
@@ -36,7 +36,8 @@ class Home extends Component {
     async componentDidMount() {
         // Gọi API ở đây
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
-
+        // Scroll về đầu trang 
+        window.scrollTo(0, 0);
     }
 
     viewDetail(id) {
@@ -66,15 +67,15 @@ class Home extends Component {
             <div id="Home">
                 <section id="Carousel">
                     <div className="row" style={{ justifyContent: 'center' }}>
-                        <Carousel>
+                        <Carousel style={{ height: 300 }}>
                             {
                                 coverImage.map((item, index) => {
                                     return (
-                                        <Carousel.Item key={index.toString()}>
+                                        <Carousel.Item key={index.toString()} style={{ maxHeight: 240, overflow: 'hidden' }}>
                                             <img
                                                 src={item.url}
                                                 alt={`${index} slide`}
-                                                style={{ maxHeight: '100%', maxWidth: '100%' }}
+                                                style={{ maxHeight: '100%', maxWidth: '100%', }}
                                             />
                                         </Carousel.Item>
                                     )
@@ -98,8 +99,8 @@ class Home extends Component {
                                                 {item.description}
                                             </div>
                                             <div style={{ textAlign: 'right' }}>
-                                            <Link to={`${item.title}`}>
-                                                Xem thêm...
+                                                <Link to={`${item.title}`}>
+                                                    Xem thêm...
                                             </Link>
                                             </div>
                                         </div>
