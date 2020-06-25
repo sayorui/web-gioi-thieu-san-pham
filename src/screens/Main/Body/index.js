@@ -20,9 +20,16 @@ export default class Body extends Component {
     }
 
     componentDidMount() {
-
+        this.calculateWindowWidth();
     }
 
+    calculateWindowWidth = () => {
+        if (window.innerWidth < 992) {
+            this.setState({ mobile: true })
+        } else {
+            this.setState({ mobile: false })
+        }
+    }
 
     componentWillUnmount() {
     }
@@ -36,10 +43,10 @@ export default class Body extends Component {
                     <h1>IZUMIO JAPAN</h1>
                     <h4>Nhập Khẩu Chính Hãng Nội Địa Nhật Bản</h4>
                     <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{ backgroundColor: 'CadetBlue' }}>
-                        <nav className="navbar top-navbar navbar-expand-md navbar-light" >
-                            <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky">
+                        <nav className="navbar top-navbar navbar-expand-sm navbar-light" >
+                            <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky" style={{justifyContent: mobile ? 'center' : '' }}>
                                 {/* Left */}
-                                <ul className="navbar-nav float-left mr-auto" style={{ marginLeft: 250 }}>
+                                <ul className="navbar-nav float-left" style={{ marginLeft: !mobile ? 250 : 0}}>
                                     <li className="nav-item">
                                         <Link
                                             to={`./`}
@@ -98,9 +105,8 @@ export default class Body extends Component {
                 </div>
 
                 {/* Footer */}
-                <div>
-                    <div className="row" style={{ marginLeft: 250, marginRight: 250 }}>
-                        <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
+                    <div id="Footer" className="row" style={{ marginLeft: 250, marginRight: 250 }}>
+                        <div className="col-lg-4 col-md-4 col-sm-4" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">NPP IZUMIO JAPAN</h3>
                             <div className="textwidget custom-html-widget">NPP IZUMIO JAPAN <br />
                             – Xuất xứ sản phẩm :  Nhật Bản<br />
@@ -109,7 +115,7 @@ export default class Body extends Component {
                                 # Hỗ trợ hướng dẫn mua hàng :<br />
                                 0982.877.559/ 079.4678933</div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
+                        <div className="col-lg-4 col-md-4 col-sm-4" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">CAM KẾT CHẤT LƯỢNG</h3>
                             <div className="textwidget custom-html-widget">– Sản phẩm chất lượng, nhập khẩu chính hãng 100% từ Nhật Bản<br />
                             – Giao hàng miễn phí toàn quốc<br />
@@ -126,7 +132,7 @@ export default class Body extends Component {
                                 # Hỗ trợ hướng dẫn mua hàng :<br />
                                 0968-01-8166</div>
                         </div> */}
-                        <div className="col-lg-4 col-md-6 col-sm-12" style={{ padding: '5px 10px' }}>
+                        <div className="col-lg-4 col-md-4 col-sm-4" style={{ padding: '5px 10px' }}>
                             <h3 className="widget-title">CHI NHÁNH TRÊN TOÀN CẦU</h3>
                             <div className="textwidget custom-html-widget">
                                 <a rel="nofollow noopener noreferrer" href="http://www.naturally-plus.com/jp/ja/" target="_blank">  NHẬT BẢN </a><br />
@@ -151,7 +157,6 @@ export default class Body extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
             </>
         )
     }

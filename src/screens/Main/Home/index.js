@@ -90,7 +90,7 @@ class Home extends Component {
                         {
                             listSP.map((item, index) => {
                                 return (
-                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12" key={index.toString()}>
+                                    <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12" key={index.toString()}>
                                         <div style={{ textAlign: 'center' }}>
                                             <img
                                                 src={item.urlImage}
