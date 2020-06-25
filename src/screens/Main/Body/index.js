@@ -85,7 +85,7 @@ export default class Body extends Component {
                 </div>
 
                 {/* Page */}
-                <div id="Page" className="page-wrapper" style={{ display: 'block', paddingTop: 140, marginRight: 250 }}>
+                <div id="Page" className="page-wrapper" style={{ display: 'block', paddingTop: window.innerWidth < 576 ? 200 : 140, marginRight: 250 }}>
                     <div className="container-fluid">
                         <Switch>
                             <Route path="/" exact>
