@@ -69,9 +69,11 @@ class Post extends Component {
                     formData.append(file.name, file, file.name + 'anh_mau.jpg')
                 })
 
-                API.uploadImage(formData).then(res => {
-                    console.log(67, res)
-                })
+                console.log(72, formData)
+
+                // API.uploadImage(formData).then(res => {
+                //     console.log(67, res)
+                // })
 
 
             } catch (ex) {
