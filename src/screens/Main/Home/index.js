@@ -20,6 +20,7 @@ const coverImage = [
 const listSP = [
     { title: 'izumio-la-gi-tai-sao-nuoc-giau-hydro-izumio-lai-chua-tri-duoc-hon-170-loai-benh-ly', urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/izumio-1-1-150x150.jpg', description: 'IZUMIO Nhật Bản là một loại nước uống giàu hàm lượng Hydro cao nhất thế giới với 2,6 triệu phân tử hydro trong mỗi túi 200ml. Được sản xuất tại Nhật Bản. Tác dụng của nước Hydro là tiêu diệt các gốc tự do ( Nguyên nhân gây ra mọi loại bệnh tật trong cơ thể con người ). Nước IZUMIO Có khả năng tăng cường sức khỏe phòng chống ngăn ngừa bệnh tật, hỗ trợ điều trị hiệu quả hơn 170 loại bệnh lý thường gặp, hỗ trợ cho cả những bệnh nhân K đang trong quá trình điều trị cải thiện sức khỏe nhanh hơn . Hàng trăm bệnh nhân ung thư trước, trong và sau giai đoạn hóa xạ trị đang dùng IZUMIO mỗi ngày .' },
     { title: 'super-lutein-mirto+-naturally-plus,-vien-uong-bo-sung-toan-dien-voi-13-duong-chat-sac-mau-huu-co', urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/mirtoplus-150x150.png', description: 'Super Lutein Mirto+ là thực phẩm chức năng dinh dưỡng cao cấp dạng viên nang mềm. Được nhập khẩu chính hãng từ Nhật Bản. Super Lutein Mirto + được sản xuất với 6 tinh chất carotenoids và 5 chất dinh dưỡng cần thiết từ Super Lutein. Đặc biệt trong viên Super Lutein Mirto + còn có Mirtogenol với 2 thành phần được cấp giấy chứng nhận độc quyền trên thế giới đó là Mirtoselect + Pycnogenol . Với tác dụng chống lão hóa da, tăng thị lực cho mắt hiệu quả gấp 4 lần .' },
+    { title: 'super-lutein-san-pham-bo-sung-dinh-duong-da-carotenoid', urlImage: 'http://nuocizumio.com/wp-content/uploads/2016/12/super_lutein-150x150.png', description: 'Super Lutein là một sản phẩm bổ sung dinh dưỡng đa carotenoid được thiết kế đặc biệt để hỗ trợ mắt và sức khỏe tổng thể. Super Lutein chứa hỗn hợp chất chống oxy hóa và dinh dưỡng có nguồn gốc tự nhiên giúp bạn duy trì hiệu suất thị lực tối ưu, nhịp sinh học khỏe mạnh, hỗ trợ quá trình sinh học bình thường. Super Lutein được chứng thực bởi nhà khoa học và giáo sư nổi tiếng tại Đại học Maryland, Tiến sĩ Frederick Khachik, một cơ quan hàng đầu về carotenoids, và dựa trên nhiều năm nghiên cứu và nghiên cứu lâm sàng.' },
 ]
 
 class Home extends Component {
@@ -90,7 +91,7 @@ class Home extends Component {
                         {
                             listSP.map((item, index) => {
                                 return (
-                                    <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12" key={index.toString()}>
+                                    <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12" key={index.toString()}>
                                         <div style={{ textAlign: 'center' }}>
                                             <img
                                                 src={item.urlImage}
