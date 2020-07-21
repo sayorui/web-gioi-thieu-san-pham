@@ -31,6 +31,7 @@ class Home extends Component {
             listBaiVietMoi: [],
             bvPage: 0,
             bvTotalpage: 0,
+            mobile: false,
         }
     }
 
@@ -39,6 +40,15 @@ class Home extends Component {
         // fetch('locahost:44/api/Posts').then(res => { console.log(res); this.setState({ listTimHieuSanPham: res.data || [] }) } )
         // Scroll về đầu trang 
         window.scrollTo(0, 0);
+        this.calculateWindowWidth();
+    }
+
+    calculateWindowWidth = () => {
+        if (window.innerWidth < 992) {
+            this.setState({ mobile: true })
+        } else {
+            this.setState({ mobile: false })
+        }
     }
 
     viewDetail(id) {
@@ -53,7 +63,7 @@ class Home extends Component {
     }
 
     render() {
-        const { listBaiVietMoi, listCarousal } = this.state;
+        const { listBaiVietMoi, listCarousal, mobile } = this.state;
 
         const review = this.state.listCarousal[0];
         console.log(123, review);
@@ -63,6 +73,9 @@ class Home extends Component {
                 <li className="page-item"><a className="page-link" onClick={() => this.getPagingBaiViet(i + 1)}>{i + 1}</a></li>
             )
         }
+
+        let mobileStyle = { height: 100, maxWidth: window.innerWidth - 40, }
+        let webStyle = { width: '100%', height: 300 }
 
         return (
             <div id="Home">
@@ -76,7 +89,7 @@ class Home extends Component {
                                             <img
                                                 src={item.url}
                                                 alt={`${index} slide`}
-                                                style={{ height: 100, maxWidth: window.innerWidth - 40, }}
+                                                style={mobile ? mobileStyle : webStyle}
                                             />
                                         </Carousel.Item>
                                     )
