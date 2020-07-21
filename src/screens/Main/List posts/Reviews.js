@@ -64,7 +64,7 @@ class Reviews extends Component {
                                                     className="d-block"
                                                     src={item.coverImage ? item.coverImage : '../../assets/images/big/img6.jpg'}
                                                     alt="First slide"
-                                                    style={{ maxHeight: '300px' }}
+                                                    style={{ maxHeight: '300px', width: '100%' }}
                                                 />
                                                 <div className="card-body">
                                                     {item.title}

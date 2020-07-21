@@ -48,6 +48,7 @@ var API = {
     },
 
     updatePost(id, title, content, type, coverImage) {
+        console.log(content)
         return fetch(API_ROUTE + '/api/Posts', {
             method: 'PUT',
             headers: {

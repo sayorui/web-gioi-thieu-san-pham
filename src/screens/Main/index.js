@@ -5,6 +5,11 @@ import { Carousel } from 'react-bootstrap'
 import Footer from './Footer'
 
 export default class Main extends Component {
+
+    componentDidMount() {
+        // window.addEventListener()
+    }
+
     render() {
         return (
             <div id="main-wrapper" data-theme="light" data-layout="vertical"

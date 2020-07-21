@@ -68,15 +68,15 @@ class Home extends Component {
             <div id="Home">
                 <section id="Carousel">
                     <div className="row" style={{ justifyContent: 'center' }}>
-                        <Carousel style={{ height: 300 }}>
+                        <Carousel >
                             {
                                 coverImage.map((item, index) => {
                                     return (
-                                        <Carousel.Item key={index.toString()} style={{ maxHeight: 240, overflow: 'hidden' }}>
+                                        <Carousel.Item id="" key={index.toString()} style={{}}>
                                             <img
                                                 src={item.url}
                                                 alt={`${index} slide`}
-                                                style={{ maxHeight: '100%', maxWidth: '100%', }}
+                                                style={{ height: 100, maxWidth: window.innerWidth - 40, }}
                                             />
                                         </Carousel.Item>
                                     )
