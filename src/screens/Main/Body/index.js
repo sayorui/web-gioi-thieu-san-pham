@@ -46,6 +46,7 @@ class Body extends Component {
                 <div id="Header" style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100 }}>
                     <h1 onDoubleClick={() => this.goHome()}>IZUMIO JAPAN</h1>
                     <h4>Nhập Khẩu Chính Hãng Nội Địa Nhật Bản</h4>
+                    <h4>Hotline/Zalo: 0982.877.559</h4>
                     <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{ backgroundColor: 'CadetBlue' }}>
                         <nav className="navbar top-navbar navbar-expand-sm navbar-light" >
                             <div className="navbar-collapse flex" id="navbarSupportedContent" data-navbarbg="skin6" id="sticky" style={{justifyContent: mobile ? 'center' : '' }}>
