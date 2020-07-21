@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { Carousel } from "react-bootstrap";
 import Home from '../Home';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, withRouter, Link, Switch } from 'react-router-dom';
 import Detail from '../../Detail';
 import API from '../../../api'
 import Header from '../Header';
@@ -10,7 +10,7 @@ import { getTitleRouteName } from '../../../utility/function';
 import Products from '../List posts/Products';
 import Reviews from '../List posts/Reviews';
 
-export default class Body extends Component {
+class Body extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,6 +31,10 @@ export default class Body extends Component {
         }
     }
 
+    goHome = () => {
+        this.props.history.push(`./`);
+    }
+
     componentWillUnmount() {
     }
 
@@ -40,7 +44,7 @@ export default class Body extends Component {
             <>
                 {/* Header */}
                 <div id="Header" style={{ backgroundColor: 'white', textAlign: 'center', position: 'fixed', width: '100%', zIndex: 100 }}>
-                    <h1>IZUMIO JAPAN</h1>
+                    <h1 onDoubleClick={() => this.goHome()}>IZUMIO JAPAN</h1>
                     <h4>Nhập Khẩu Chính Hãng Nội Địa Nhật Bản</h4>
                     <header className="header-bar" data-navbarbg="skin6" id="header-bar" style={{ backgroundColor: 'CadetBlue' }}>
                         <nav className="navbar top-navbar navbar-expand-sm navbar-light" >
@@ -161,3 +165,4 @@ export default class Body extends Component {
         )
     }
 }
+export default withRouter(Body);
