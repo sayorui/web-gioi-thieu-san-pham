@@ -75,7 +75,7 @@ class Home extends Component {
         }
 
         let mobileStyle = { height: 100, maxWidth: window.innerWidth - 40, }
-        let webStyle = { width: '100%', height: 300 }
+        let webStyle = { width: '100%', height: 280 }
 
         return (
             <div id="Home">

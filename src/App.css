@@ -125,19 +125,23 @@
   #Page { margin-left: 0 !important; margin-right: 0 !important; } 
   #Footer { margin-left: 0 !important; margin-right: 0 !important; } 
   .wp-block-image .lazyloaded {
-    width: 50%;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   #Page { margin-left: 0 !important; margin-right: 0 !important; } 
   #Footer { margin-left: 0 !important; margin-right: 0 !important; } 
-  .wp-block-image .lazyloaded {
+  .lazyloaded {
+    height: 200px;
+    width: 100%;
+  }
+  .wp-block-image.lazyloaded.{
     width: 100%;
   }
 }
 
-/* .lazyloaded {
+.lazyloaded {
   width: 100%;
 }
 
@@ -145,7 +149,7 @@
   text-align: center;
 }
 
-.wp-block-image .lazyloaded {
+.wp-block-image.lazyloaded {
   width: 50%;
-} */
+}
 
